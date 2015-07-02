@@ -42,7 +42,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-#inputBox {
+#inputBox1 {
   margin-left: 5%;
   margin-right: 5%;
   border-color: #664147;
@@ -51,10 +51,26 @@ h1 {
   height: 10%;
 }
 
-#inputBox p {
+#inputBox1 p {
   border: 2px dashed #664147;
 }
-#inputBox p:hover {
+#inputBox1 p:hover {
+  background-color: #2f9c95;
+}
+
+#inputBox2 {
+  margin-left: 5%;
+  margin-right: 5%;
+  border-color: #664147;
+  border: 2px;
+  width: 90%;
+  height: 10%;
+}
+
+#inputBox2 p {
+  border: 2px dashed #664147;
+}
+#inputBox2 p:hover {
   background-color: #2f9c95;
 }
 
