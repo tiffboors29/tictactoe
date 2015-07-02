@@ -1,40 +1,20 @@
 'use strict';
 
-// $(document).ready(function () {
-//   var player1Token = prompt('Hi Player 1. Please, type either x or o');
 
-//   $('#inputBox1').html(player1Token);
-// });
-
-
-var boardgame = [
-          ['a', 'b', 'c'],
-          ['d', 'e', 'f'],
-          ['g', 'h', 'i']];
+var gameboard = [
+          [null, null, null],
+          [null, null, null],
+          [null, null, null]];
 
 
-
-
-
-// gets player1 to choose either x or o
-var getPlayer1Token = function() {
-  console.log('Player 1, please choose either x or o');
-  return prompt();
+// sets x at certain tile
+var getXmove = function(row, col) {
+  return (gameboard[row][col] = 'x') || getInput();
 };
 
-// sets player2 to either 'o' or 'x' depending on what
-// player1 chose
-var setPlayer2Token = function() {
-  var player1 = getPlayer1Token();
-  var player2;
-  if (player1 === 'o') {
-    console.log('Player 1 chose o. Player 2, you will be x.');
-    player2 = 'x';
-  } else {
-    console.log('Player 1 chose x. Player 2, you will be o.');
-    player2 = 'o';
-  }
-  return player2;
+// sets o at certain tile
+var getOmove = function(row, col) {
+  return (gameboard[row][col] = 'o') || getInput();
 };
 
 
@@ -43,79 +23,61 @@ var getInput = function() {
   return prompt();
 };
 
-// gets player1's move
-// prompt's player for input if move is not placed
-var getPlayer1Move = function(move) {
 
-  return move || getInput();
-};
-
-// gets player2's move
-// prompt's player for input if move is not placed
-var getPlayer2Move = function(tile) {
-  var move;
-  return tile || getInput();
-};
 
 // not sure where these arguments get passed in
-var getWinner = function(player1Move, player2Move) {
+var getWinner = function(playerX, playerO) {
   var winner;
-  if (r1t1 === r1t2 === r1t3 === 'o' ||
-      r1t1 === r2t2 === r3t3 === 'o' ||
-      r1t1 === r2t1 === r3t1 === 'o' ||
-      r1t2 === r2t2 === r3t2 === 'o' ||
-      r1t3 === r2t2 === r3t1 === 'o' ||
-      r1t3 === r2t3 === r3t3 === 'o' ||
-      r2t1 === r2t2 === r2t3 === 'o' ||
-      r3t1 === r3t2 === r3t3 === 'o') {
-    if (player1 === 'o') {
-      winner = player1;
-    } else {  // else 'o' must be player2
-      winner = player2;
-    }
+  if (gameboard[0][0] === gameboard[0][1] === gameboard[0][2] === 'o' ||
+      gameboard[0][0] === gameboard[1][1] === gameboard[2][2] === 'o' ||
+      gameboard[0][0] === gameboard[1][0] === gameboard[2][0] === 'o' ||
+      gameboard[0][1] === gameboard[1][1] === gameboard[2][1] === 'o' ||
+      gameboard[0][2] === gameboard[1][2] === gameboard[2][2] === 'o' ||
+      gameboard[0][2] === gameboard[1][1] === gameboard[2][0] === 'o' ||
+      gameboard[1][0] === gameboard[1][1] === gameboard[1][2] === 'o' ||
+      gameboard[2][0] === gameboard[2][1] === gameboard[2][2] === 'o') {
+    winner = playerO;
   }
-  if (r1t1 === r1t2 === r1t3 === 'x' ||
-      r1t1 === r2t2 === r3t3 === 'x' ||
-      r1t1 === r2t1 === r3t1 === 'x' ||
-      r1t2 === r2t2 === r3t2 === 'x' ||
-      r1t3 === r2t2 === r3t1 === 'x' ||
-      r1t3 === r2t3 === r3t3 === 'x' ||
-      r2t1 === r2t2 === r2t3 === 'x' ||
-      r3t1 === r3t2 === r3t3 === 'x') {
-    if (player1 === 'x') {
-      winner = player1;
-    } else {  // else 'x' must be player2
-      winner = player2;
-    }
+  if (gameboard[0][0] === gameboard[0][1] === gameboard[0][2] === 'x' ||
+      gameboard[0][0] === gameboard[1][1] === gameboard[2][2] === 'x' ||
+      gameboard[0][0] === gameboard[1][0] === gameboard[2][0] === 'x' ||
+      gameboard[0][1] === gameboard[1][1] === gameboard[2][1] === 'x' ||
+      gameboard[0][2] === gameboard[1][2] === gameboard[2][2] === 'x' ||
+      gameboard[0][2] === gameboard[1][1] === gameboard[2][0] === 'x' ||
+      gameboard[1][0] === gameboard[1][1] === gameboard[1][2] === 'x' ||
+      gameboard[2][0] === gameboard[2][1] === gameboard[2][2] === 'x') {
+    winner = playerX;
   }
-  // need to write cat's game scenario
+  if (a !== null && b !== null && c !== null &&
+      d !== null && e !== null && f !== null &&
+      g !== null && h !== null && i !== null) {
+    winner = 'Cat\'s Game';
+  }
   return winner;
 };
 
 
 var playGame = function() {
   console.log('Let\'s play tic tac toe!');
-  var player1wins= 0;
-  var player2wins= 0;
+  var playerXwins= 0;
+  var playerOwins= 0;
 
-  while (player1wins < 1 && player2wins < 1) {
-    var player1Move = getPlayer1Move();
-    var getPlayer2Move = getPlayer2Move;
-    var winner = getWinner(player1Move, player2Move);
-    var player1Wins = 0;
-    var player2Wins = 0;
+  while (playerXwins < 1 && playerOwins < 1) {
+    var winner = getWinner(playerX, playerO);
+    var playerX = getXmove();
+    var playerO = getOmove();
 
-    if (winner === player1) {
-      console.log('Player 1 Wins!');
-      player1wins += 1;
-    } else if (winner === player2) {
-      console.log('Player 2 Wins!');
-      player2wins += 1;
+    if (winner === playerX ) {
+      console.log('Player X Wins!');
+      playerXwins += 1;
+    } else if (winner === playerO) {
+      console.log('Player O Wins!');
+      playerOwins += 1;
     } else {
       console.log('Cat\'s Game: No Winners!');
     }
   }
-  return [player1wins, player2wins];
+  return [playerXwins, playerOwins];
 };
 
 var bestOfFive = function () {
