@@ -53,7 +53,7 @@ var getPlayer1Move = function(move) {
 // gets player2's move
 // prompt's player for input if move is not placed
 var getPlayer2Move = function(tile) {
-  var
+  var move;
   return tile || getInput();
 };
 
@@ -73,6 +73,7 @@ var getWinner = function(player1Move, player2Move) {
     } else {  // else 'o' must be player2
       winner = player2;
     }
+  }
   if (r1t1 === r1t2 === r1t3 === 'x' ||
       r1t1 === r2t2 === r3t3 === 'x' ||
       r1t1 === r2t1 === r3t1 === 'x' ||
@@ -130,10 +131,10 @@ var bestOfFive = function () {
     var player2Wins = 0;
 
     if (winner === player1) {
-      console.log('Player 1 Wins this match! ' + 'The score is ' + 'Player 1: ' player1wins + ' Player 2: ' + player2wins);
+      console.log('Player 1 Wins this match! ' + 'The score is ' + 'Player 1: ' + player1wins + ' Player 2: ' + player2wins);
       player1wins += 1;
     } else if (winner === player2) {
-      console.log('Player 2 Wins this match! ' + 'The score is ' + 'Player 1: ' player1wins + ' Player 2: ' + player2wins);
+      console.log('Player 2 Wins this match! ' + 'The score is ' + 'Player 1: ' + player1wins + ' Player 2: ' + player2wins);
       player2wins += 1;
     }
   }
@@ -145,4 +146,4 @@ var bestOfFive = function () {
       console.log('Cat\'s Game: No Winners!');
   }
   return [player1wins, player2wins];
-}
+};
