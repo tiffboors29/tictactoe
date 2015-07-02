@@ -1,5 +1,20 @@
 'use strict';
 
+$(document).ready(function () {
+  var player1Token = prompt('Hi Player 1. Please, type either x or o');
+
+  $('#inputBox1').html(player1Token);
+
+  var $thingList = $('fav-list');
+
+
+  var $button = $('#new-thing-button');
+  $button.on('click', function(event) {
+    event.preventDefault();
+    MyApp.addToList($thingList);
+  });
+});
+
 // gets player1 to choose either x or o
 var getPlayer1Token = function() {
   console.log('Player 1, please choose either x or o');
