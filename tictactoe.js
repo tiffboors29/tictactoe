@@ -4,10 +4,17 @@
 //   var player1Token = prompt('Hi Player 1. Please, type either x or o');
 
 //   $('#inputBox1').html(player1Token);
-
-
-//   });
 // });
+
+
+var boardgame = [
+          ['a', 'b', 'c'],
+          ['d', 'e', 'f'],
+          ['g', 'h', 'i']];
+
+
+
+
 
 // gets player1 to choose either x or o
 var getPlayer1Token = function() {
@@ -39,13 +46,15 @@ var getInput = function() {
 // gets player1's move
 // prompt's player for input if move is not placed
 var getPlayer1Move = function(move) {
+
   return move || getInput();
 };
 
 // gets player2's move
 // prompt's player for input if move is not placed
-var getPlayer2Move = function(move) {
-  return move || getInput();
+var getPlayer2Move = function(tile) {
+  var
+  return tile || getInput();
 };
 
 // not sure where these arguments get passed in
