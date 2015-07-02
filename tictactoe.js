@@ -98,3 +98,33 @@ var playGame = function() {
   }
   return [player1wins, player2wins];
 };
+
+var bestOfFive = function () {
+  console.log('Let\'s play tic tac toe best of five!');
+  var player1wins= 0;
+  var player2wins= 0;
+
+  while (player1wins < 3 && player2wins < 3) {
+    var player1Move = getPlayer1Move();
+    var getPlayer2Move = getPlayer2Move;
+    var winner = getWinner(player1Move, player2Move);
+    var player1Wins = 0;
+    var player2Wins = 0;
+
+    if (winner === player1) {
+      console.log('Player 1 Wins this match! ' + 'The score is ' + 'Player 1: ' player1wins + ' Player 2: ' + player2wins);
+      player1wins += 1;
+    } else if (winner === player2) {
+      console.log('Player 2 Wins this match! ' + 'The score is ' + 'Player 1: ' player1wins + ' Player 2: ' + player2wins);
+      player2wins += 1;
+    }
+  }
+  if (player1wins === 3) {
+    console.log('Player 1 Wins the Game!');
+  } else if (player2wins === 3) {
+    console.log('Player 2 Wins the Game!');
+  } else {
+      console.log('Cat\'s Game: No Winners!');
+  }
+  return [player1wins, player2wins];
+}
