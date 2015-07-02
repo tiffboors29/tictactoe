@@ -1,19 +1,13 @@
 'use strict';
 
-$(document).ready(function () {
-  var player1Token = prompt('Hi Player 1. Please, type either x or o');
+// $(document).ready(function () {
+//   var player1Token = prompt('Hi Player 1. Please, type either x or o');
 
-  $('#inputBox1').html(player1Token);
-
-  var $thingList = $('fav-list');
+//   $('#inputBox1').html(player1Token);
 
 
-  var $button = $('#new-thing-button');
-  $button.on('click', function(event) {
-    event.preventDefault();
-    MyApp.addToList($thingList);
-  });
-});
+//   });
+// });
 
 // gets player1 to choose either x or o
 var getPlayer1Token = function() {
