@@ -1,0 +1,14 @@
+Select a playing token
+  As a player, I want to pick to play either x or o.
+Place token on square of game board
+  As a player, I want to place my x/o on a specified square of the game board
+Prompt player 2 move
+  As player 2, I want to place my x/o on a specified square
+Determine Cat's Game
+  The game will end when no winner can be made from the spots placed on the board
+Determine Winner
+  The game will alert players of a winner when one player has placed three tokens in a row
+Best to five
+  The players will have the option to select play to the best of five
+Clear the board for New Game
+  The players can select to start a new game
