@@ -39,6 +39,7 @@ var getPlayer2Move = function(move) {
   return move || getInput();
 };
 
+// not sure where these arguments get passed in
 var getWinner = function(player1Move, player2Move) {
   var winner;
   if (r1t1 === r1t2 === r1t3 === 'o' ||
@@ -70,4 +71,30 @@ var getWinner = function(player1Move, player2Move) {
   }
   // need to write cat's game scenario
   return winner;
+};
+
+
+var playGame = function() {
+  console.log('Let\'s play tic tac toe!');
+  var player1wins= 0;
+  var player2wins= 0;
+
+  while (player1wins < 1 && player2wins < 1) {
+    var player1Move = getPlayer1Move();
+    var getPlayer2Move = getPlayer2Move;
+    var winner = getWinner(player1Move, player2Move);
+    var player1Wins = 0;
+    var player2Wins = 0;
+
+    if (winner === player1) {
+      console.log('Player 1 Wins!');
+      player1wins += 1;
+    } else if (winner === player2) {
+      console.log('Player 2 Wins!');
+      player2wins += 1;
+    } else {
+      console.log('Cat\'s Game: No Winners!');
+    }
+  }
+  return [player1wins, player2wins];
 };
