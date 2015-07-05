@@ -106,11 +106,11 @@ h1 {
 }
 
 .x-layer {
-  background: url(images/);  /* places x over tile */
+  background: url("images/xlayer.jpg");  /* places x over tile */
 }
 
 .o-layer {
-  background: url(images/); /* places o over tile */
+  background: url("images/olayer.jpg"); /* places o over tile */
 }
 
 .default-tile {
