@@ -105,6 +105,20 @@ h1 {
   margin-top: 2%;
 }
 
+
+.default-tile {
+  width: 25%;
+  height: 25%;
+  background-color: #a3f7b5;
+  border: 2px dashed #664147;
+  float: left;
+}
+
+.default-tile:hover {
+  background-color: #2f9c95;
+}
+
+
 .x-layer {
   background: url("images/xlayer.jpg");  /* places x over tile */
   background-position: center;
@@ -129,17 +143,6 @@ h1 {
   float: left;
 }
 
-.default-tile {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  border: 2px dashed #664147;
-  float: left;
-}
-
-.default-tile:hover {
-  background-color: #2f9c95;
-}
 
 #tileA {
   margin-top: 6%;
