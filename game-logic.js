@@ -1,13 +1,5 @@
 'use strict';
 
-
-
-// var player1;
-// var player2;
-// var turn;
-// var tileA, tileB, tileC, tileD, tileE, tileF, tileG, tileH, tileI;
-
-
 // var setTurn = function() {  // randomly selects player 1 or 2 to go first
 //   var r = Math.random();
 //   if (r > 0.5) {
@@ -19,24 +11,6 @@
 // };
 
 
-// var playGame = function() {
-//   while ( ($('#tileA').html !== 'x' || 'o') &&
-//           ($('#tileB').html !== 'x' || 'o') &&
-//           ($('#tileC').html !== 'x' || 'o') &&
-//           ($('#tileD').html !== 'x' || 'o') &&
-//           ($('#tileE').html !== 'x' || 'o') &&
-//           ($('#tileF').html !== 'x' || 'o') &&
-//           ($('#tileG').html !== 'x' || 'o') &&
-//           ($('#tileH').html !== 'x' || 'o') &&
-//           ($('#tileI').html !== 'x' || 'o')  ) {
-//     setTurn();
-//     if (turn === player1) {
-//       getPlayer1Move();
-//     } else {
-//       getPlayer2Move();
-//   }
-//   }
-// };
 
 
 // var getPlayer1Move = function() {
@@ -121,37 +95,6 @@
 
 
 
-// var getWin = function() {
-//   var xWins;
-//   var oWins;
-//   if (tileA === tileB === tileC === 'x' ||  // first row
-//       tileD === tileE === tileF === 'x' ||  // second row
-//       tileG === tileH === tileI === 'x' ||  // third row
-//       tileA === tileD === tileG === 'x' ||  // first column
-//       tileB === tileE === tileH === 'x' ||  // second column
-//       tileC === tileF === tileI === 'x' ||  // last column
-//       tileA === tileE === tileI === 'x' ||  // diagnal R-L
-//       tileG === tileE === tileC === 'x' ||) { //diagnal L-R
-//     xWin += 1;
-//     console.log("Player 1 wins!");
-//     clearBoard();
-//     } else if (tileA === tileB === tileC === 'o' ||  // first row
-//       tileD === tileE === tileF === 'o' ||  // second row
-//       tileG === tileH === tileI === 'o' ||  // third row
-//       tileA === tileD === tileG === 'o' ||  // first column
-//       tileB === tileE === tileH === 'o' ||  // second column
-//       tileC === tileF === tileI === 'o' ||  // last column
-//       tileA === tileE === tileI === 'o' ||  // diagnal R-L
-//       tileG === tileE === tileC === 'o' ||) { //diagnal L-R
-//     oWin += 1;
-//     console.log("Player 2 wins!");
-//     clearBoard();
-//     } else if (a !== null && b !== null && c !== null && // if all tiles are filled
-//       d !== null && e !== null && f !== null && // but there are no winners
-//       g !== null && h !== null && i !== null) { // it's a cat's game
-//     console.log("Cat\'s Game. No Winners!")
-//   }
-// };
 
 
 
