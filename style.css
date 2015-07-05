@@ -105,117 +105,69 @@ h1 {
   margin-top: 2%;
 }
 
+.x-layer {
+  background: url(images/);  /* places x over tile */
+}
+
+.o-layer {
+  background: url(images/); /* places o over tile */
+}
+
+.default-tile {
+  width: 25%;
+  height: 25%;
+  background-color: #a3f7b5;
+  border: 2px dashed #664147;
+  float: left;
+}
+
+.default-tile:hover {
+  background-color: #2f9c95;
+}
 
 #tileA {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  float: left;
   margin-top: 6%;
   margin-left: 6%;
-  border: 2px dashed #664147;
 }
-#tileA:hover {
-  background-color: #2f9c95;
-}
-#tileAlayer {
-  background:url(images/);
-}
+
 #tileB {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  float: left;
   margin-top: 6%;
   margin-left: 5%;
   margin-right: 5%;
-  border: 2px dashed #664147;
 }
-#tileB:hover {
-  background-color: #2f9c95;
-}
+
 #tileC {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  float: left;
   margin-top: 6%;
-  border: 2px dashed #664147;
 }
-#tileC:hover {
-  background-color: #2f9c95;
-}
+
 #tileD {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  float: left;
   margin-top: 6%;
   margin-left: 6%;
-  border: 2px dashed #664147;
 }
-#tileD:hover {
-  background-color: #2f9c95;
-}
+
 #tileE {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  float: left;
   margin-top: 6%;
   margin-left: 5%;
   margin-right: 5%;
-  border: 2px dashed #664147;
 }
-#tileE:hover {
-  background-color: #2f9c95;
-}
+
 #tileF {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  float: left;
   margin-top: 6%;
-  border: 2px dashed #664147;
 }
-#tileF:hover {
-  background-color: #2f9c95;
-}
+
 #tileG {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  float: left;
   margin-top: 5%;
   margin-bottom: 5%;
   margin-left: 6%;
-  border: 2px dashed #664147;
 }
-#tileG:hover {
-  background-color: #2f9c95;
-}
+
 #tileH {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  float: left;
   margin: 5%;
-  border: 2px dashed #664147;
 }
-#tileH:hover {
-  background-color: #2f9c95;
-}
+
 #tileI {
-  width: 25%;
-  height: 25%;
-  background-color: #a3f7b5;
-  float: left;
   margin-top: 5%;
   margin-bottom: 5%;
-  border: 2px dashed #664147;
-}
-#tileI:hover {
-  background-color: #2f9c95;
 }
 
 
