@@ -3,8 +3,6 @@
 var player1 = 'x';  // turn 0
 var player2 = 'o';  // turn 1
 var turn = 0;
-var player1Move;
-var player2Move;
 
 var tileA;
 var tileB;
@@ -16,13 +14,11 @@ var tileG;
 var tileH;
 var tileI;
 
-var boardcheck; // checks value in each tile
-var getWin; // checks board for winner
 
 
 // places 'x' or 'o' in box when clicked
 var newGame = function() {
-  if (turn == 0, function(event {
+  if (turn == 0, function(event) {
     $(this).text(player1);
     boardcheck();
     getWin();
@@ -34,8 +30,68 @@ var newGame = function() {
   });
 };
 
+var player1Move = function() {    // changes tile class to x-layer
+  $('#tileA').on('click', function() {
+    $(this).removeClass('default-tile').addClass('x-layer');
+  }
+  $('#tileB').on('click', function() {
+    $(this).removeClass('default-tile').addClass('x-layer');
+  }
+  $('#tileC').on('click', function() {
+    $(this).removeClass('default-tile').addClass('x-layer');
+  }
+  $('#tileD').on('click', function() {
+    $(this).removeClass('default-tile').addClass('x-layer');
+  }
+  $('#tileE').on('click', function() {
+    $(this).removeClass('default-tile').addClass('x-layer');
+  }
+  $('#tileF').on('click', function() {
+    $(this).removeClass('default-tile').addClass('x-layer');
+  }
+  $('#tileD').on('click', function() {
+    $(this).removeClass('default-tile').addClass('x-layer');
+  }
+  $('#tileH').on('click', function() {
+    $(this).removeClass('default-tile').addClass('x-layer');
+  }
+  $('#tileI').on('click', function() {
+    $(this).removeClass('default-tile').addClass('x-layer');
+  }
+};
+
+var player2Move = function() {  // changes tile class to o-layer
+    $('#tileA').on('click', function() {
+    $(this).removeClass('default-tile').addClass('o-layer');
+  }
+  $('#tileB').on('click', function() {
+    $(this).removeClass('default-tile').addClass('o-layer');
+  }
+  $('#tileC').on('click', function() {
+    $(this).removeClass('default-tile').addClass('o-layer');
+  }
+  $('#tileD').on('click', function() {
+    $(this).removeClass('default-tile').addClass('o-layer');
+  }
+  $('#tileE').on('click', function() {
+    $(this).removeClass('default-tile').addClass('o-layer');
+  }
+  $('#tileF').on('click', function() {s
+    $(this).removeClass('default-tile').addClass('o-layer');
+  }
+  $('#tileD').on('click', function() {
+    $(this).removeClass('default-tile').addClass('o-layer');
+  }
+  $('#tileH').on('click', function() {
+    $(this).removeClass('default-tile').addClass('o-layer');
+  }
+  $('#tileI').on('click', function() {
+    $(this).removeClass('default-tile').addClass('o-layer');
+  }
+};
+
 // detects what is inside each tile
-boardcheck = function() {
+var boardcheck = function() {
   tileA = $('#tileA').html();
   tileB = $('#tileB').html();
   tileC = $('#tileC').html();
@@ -48,7 +104,7 @@ boardcheck = function() {
 };
 
 // detects win or cat's game
-getWin = function() {
+var getWin = function() {
   var xWins;
   var oWins;
   if (tileA === tileB === tileC === 'x' ||  // first row
@@ -92,3 +148,12 @@ var clearBoard = function() {
   oWin = 0;
   newGame();
 };
+
+$(document).ready(function() {
+  var player1Name = prompt('Player 1, what is your name?');
+  $('#player1-name').html(player1Name);
+  var player2Name = prompt('Player2, what is your name?');
+  $('#player2-name').html(player2Name);
+  newGame();
+});
+
