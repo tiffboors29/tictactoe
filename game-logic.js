@@ -19,89 +19,111 @@ var tileI;
 // places 'x' or 'o' in box when clicked
 var newGame = function() {
   if (turn == 0, function(event) {
-    $(this).text(player1);
-    boardcheck();
+    event.preventDefault();
+    console.log("Player 1, click on the square you want to play.");
+    player1Move();
     getWin();
     turn == 1;
     player2Move();
-    boardcheck();
     getWin();
     }
   });
 };
 
+
+var playGame = function() {
+  while ( (tileA !== 'x' || 'o') &&
+          (tileB !== 'x' || 'o') &&
+          (tileC !== 'x' || 'o') &&
+          (tileD !== 'x' || 'o') &&
+          (tileE !== 'x' || 'o') &&
+          (tileF !== 'x' || 'o') &&
+          (tileG !== 'x' || 'o') &&
+          (tileH !== 'x' || 'o') &&
+          (tileI !== 'x' || 'o')  ) {
+    newGame();
+  }
+};
+
 var player1Move = function() {    // changes tile class to x-layer
   $('#tileA').on('click', function() {
     $(this).removeClass('default-tile').addClass('x-layer');
-  }
+    tileA = 'x';
+  });
   $('#tileB').on('click', function() {
     $(this).removeClass('default-tile').addClass('x-layer');
-  }
+    tileB = 'x';
+  });
   $('#tileC').on('click', function() {
     $(this).removeClass('default-tile').addClass('x-layer');
-  }
+    tileC = 'x';
+  });
   $('#tileD').on('click', function() {
     $(this).removeClass('default-tile').addClass('x-layer');
-  }
+    tileD = 'x';
+  });
   $('#tileE').on('click', function() {
     $(this).removeClass('default-tile').addClass('x-layer');
-  }
+    tileE = 'x';
+  });
   $('#tileF').on('click', function() {
     $(this).removeClass('default-tile').addClass('x-layer');
-  }
-  $('#tileD').on('click', function() {
+    tileF = 'x';
+  });
+  $('#tileG').on('click', function() {
     $(this).removeClass('default-tile').addClass('x-layer');
-  }
+    tileG = 'x';
+  });
   $('#tileH').on('click', function() {
     $(this).removeClass('default-tile').addClass('x-layer');
-  }
+    tileH = 'x';
+  });
   $('#tileI').on('click', function() {
     $(this).removeClass('default-tile').addClass('x-layer');
-  }
+    tileI = 'x';
+  });
 };
 
 var player2Move = function() {  // changes tile class to o-layer
     $('#tileA').on('click', function() {
     $(this).removeClass('default-tile').addClass('o-layer');
-  }
+    tileA = 'o';
+  });
   $('#tileB').on('click', function() {
     $(this).removeClass('default-tile').addClass('o-layer');
-  }
+    tileB = 'o';
+  });
   $('#tileC').on('click', function() {
     $(this).removeClass('default-tile').addClass('o-layer');
-  }
+    tileC = 'o';
+  });
   $('#tileD').on('click', function() {
     $(this).removeClass('default-tile').addClass('o-layer');
-  }
+    tileD = 'o';
+  });
   $('#tileE').on('click', function() {
     $(this).removeClass('default-tile').addClass('o-layer');
-  }
-  $('#tileF').on('click', function() {s
+    tileE = 'o';
+  });
+  $('#tileF').on('click', function() {
     $(this).removeClass('default-tile').addClass('o-layer');
-  }
-  $('#tileD').on('click', function() {
+    tileF = 'o';
+  });
+  $('#tileG').on('click', function() {
     $(this).removeClass('default-tile').addClass('o-layer');
-  }
+    tileG = 'o';
+  });
   $('#tileH').on('click', function() {
     $(this).removeClass('default-tile').addClass('o-layer');
-  }
+    tileH = 'o';
+  });
   $('#tileI').on('click', function() {
     $(this).removeClass('default-tile').addClass('o-layer');
-  }
+    tileI = 'o';
+  });
 };
 
-// detects what is inside each tile
-var boardcheck = function() {
-  tileA = $('#tileA').html();
-  tileB = $('#tileB').html();
-  tileC = $('#tileC').html();
-  tileD = $('#tileD').html();
-  tileE = $('#tileE').html();
-  tileF = $('#tileF').html();
-  tileG = $('#tileG').html();
-  tileH = $('#tileH').html();
-  tileI = $('#tileI').html();
-};
+
 
 // detects win or cat's game
 var getWin = function() {
@@ -117,6 +139,7 @@ var getWin = function() {
       tileG === tileE === tileC === 'x' ||) { //diagnal L-R
     xWin += 1;
     console.log("Player 1 wins!");
+    clearBoard();
     } else if (tileA === tileB === tileC === 'o' ||  // first row
       tileD === tileE === tileF === 'o' ||  // second row
       tileG === tileH === tileI === 'o' ||  // third row
@@ -127,6 +150,7 @@ var getWin = function() {
       tileG === tileE === tileC === 'o' ||) { //diagnal L-R
     oWin += 1;
     console.log("Player 2 wins!");
+    clearBoard();
     } else if (a !== null && b !== null && c !== null && // if all tiles are filled
       d !== null && e !== null && f !== null && // but there are no winners
       g !== null && h !== null && i !== null) { // it's a cat's game
@@ -134,16 +158,17 @@ var getWin = function() {
   }
 };
 
+// sets tile values back to empty strings
 var clearBoard = function() {
-  tileA = $('#tileA').text("");
-  tileB = $('#tileB').text("");
-  tileC = $('#tileC').text("");
-  tileD = $('#tileD').text("");
-  tileE = $('#tileE').text("");
-  tileF = $('#tileF').text("");
-  tileG = $('#tileG').text("");
-  tileH = $('#tileH').text("");
-  tileI = $('#tileI').text("");
+  tileA = "";
+  tileB = "";
+  tileC = "";
+  tileD = "";
+  tileE = "";
+  tileF = "";
+  tileG = "";
+  tileH = "";
+  tileI = "";
   xWin = 0;
   oWin = 0;
   newGame();
