@@ -107,10 +107,26 @@ h1 {
 
 .x-layer {
   background: url("images/xlayer.jpg");  /* places x over tile */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 25%;
+  height: 25%;
+  background-color: #a3f7b5;
+  border: 2px dashed #664147;
+  float: left;
 }
 
 .o-layer {
   background: url("images/olayer.jpg"); /* places o over tile */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 25%;
+  height: 25%;
+  background-color: #a3f7b5;
+  border: 2px dashed #664147;
+  float: left;
 }
 
 .default-tile {
