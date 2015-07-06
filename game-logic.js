@@ -1,15 +1,21 @@
 'use strict';
 
-// // randomly selects player 1 or 2 to go first
-// var setTurn = function() {
-//   var r = Math.random();
-//   if (r > 0.5) {
-//     turn = player1;
-//   } else {
-//     turn = player2;
-//   }
-//   return turn;
-// };
+var turn;
+var player1 = 'x';
+var player2 = 'o';
+var turnCount = 0;
+// randomly selects player 1 or 2 to go first
+var setTurn = function() {
+  var r = Math.random();
+  if (r > 0.5) {
+    turn = player1;
+  } else {
+    turn = player2;
+  }
+  return turn;
+};
+
+
 
 // var tileAvailable = function(tile) {
 //   if (tile !== 'x' && tile !== 'o') {
