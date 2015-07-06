@@ -15,6 +15,12 @@ jQuery(document).ready(function() {
     $('#alertBox').html(message);
   };
 
+  // FIX ME
+  // add click function on 'New Game' button
+  $('#newGame').on('click', function() {
+    $('.default-tile').removeClass('x-layer').removeClass('o-layer');
+    count = 0;
+  });
 
   // FIX ME (NOT WORKING) -- stops after there's a winner, but doesn't display rest
   // checks tiles to determine if there's a winner
@@ -31,9 +37,9 @@ jQuery(document).ready(function() {
       displayAlert(player1 + ', You WON!');
     } else if ( count === 9 ) {
       $('.default-tile').off('click');
-      displayAlert('Sorry, ' + player1Name + '&' + player2Name + '. Cat\'s Game!');
+      displayAlert('Sorry, ' + player1Name + ' & ' + player2Name + '. Cat\'s Game!');
     } else if (count < 9) {
-      displayAlert(player2 + ', pick a square,');
+      displayAlert(player2 + ', pick a square');
     }
   };
 
@@ -49,10 +55,11 @@ jQuery(document).ready(function() {
   };
 
 
+
   // sets starting count of filled tiles at 0
   var count = 0;
 
-  displayAlert(player1Name + ', pick a square.');
+  displayAlert(player1Name + ', pick a square');
   // places x/o layers on clicked tiles
   $('.default-tile').on('click', function() {
     if (count === 0 || (count % 2 === 0)) {
@@ -80,43 +87,12 @@ jQuery(document).ready(function() {
 
 
 
-  // var player1Move = function() {
-  //   $('#alertBox').html('Player 1, pick a box!');
-  //   $('.default-tile').on('click', function() {
-  //     if (isAvailableTile($(this))) { // if tile is available
-  //       $(this).addClass('x-layer');  //calls player1Move   with arguments
-  //       count++;  //increases count by 1
-  //       checkWinner();
-  //       player2Move();
-  //     }
-  //   });
-  // };
-
-  //  var player2Move = function() {
-  //   $('#alertBox').html('Player 2, pick a box!');
-  //   $('.default-tile').on('click', function() {
-  //     if (isAvailableTile($(this))) { // if tile is available
-  //       $(this).addClass('o-layer');  //calls player1Move   with arguments
-  //       count++;        //increases count by 1
-  //       checkWinner();
-  //     }
-  //   });
-  // };
 
 
 
 
 
 
-
-
-
-
-
-// add click function on 'New Game' button
-// $('#newGame').on('click', function() {
-//     $('.default-tile').removeClass('x-layer').removeClass('o-layer');
-//   });
 
 // add reset function for automatic reset after game over
 // var reset = function() {
