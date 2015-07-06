@@ -15,9 +15,10 @@ jQuery(document).ready(function() {
     $('#alertBox').html(message);
   };
 
-  // FIX ME (NOT WORKING)
+
+  // FIX ME (NOT WORKING) -- stops after there's a winner, but doesn't display rest
   // checks tiles to determine if there's a winner
-  var checkWinner = function(layer, player) {
+  var checkWinner = function(layer, player1, player2) {
     if (($('#tile1').hasClass(layer) && $('#tile2').hasClass(layer) && $('#tile3').hasClass(layer)) ||
         ($('#tile4').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile6').hasClass(layer)) ||
         ($('#tile7').hasClass(layer) && $('#tile8').hasClass(layer) && $('#tile9').hasClass(layer)) ||
@@ -26,9 +27,13 @@ jQuery(document).ready(function() {
         ($('#tile3').hasClass(layer) && $('#tile6').hasClass(layer) && $('#tile9').hasClass(layer)) ||
         ($('#tile1').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile9').hasClass(layer)) ||
         ($('#tile3').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile7').hasClass(layer))) {
-      displayAlert(player + ', You WON!');
+      $('.default-tile').off('click');
+      displayAlert(player1 + ', You WON!');
     } else if ( count === 9 ) {
+      $('.default-tile').off('click');
       displayAlert('Sorry, ' + player1Name + '&' + player2Name + '. Cat\'s Game!');
+    } else if (count < 9) {
+      displayAlert(player2 + ', pick a square,');
     }
   };
 
@@ -54,15 +59,15 @@ jQuery(document).ready(function() {
       if (isAvailableTile($(this)) === true) {
         $(this).addClass('x-layer');
         count++;
-        checkWinner('x-layer');
-        displayAlert(player2Name + ', pick a square.');
+        checkWinner('x-layer', player1Name, player2Name);
+        // displayAlert(player2Name + ', pick a square.');
       }
     } else {
       if (isAvailableTile($(this)) === true) {
         $(this).addClass('o-layer');
         count++;
-        checkWinner('o-layer');
-        displayAlert(player1Name + ', pick a square.');
+        checkWinner('o-layer', player2Name, player1Name);
+        // displayAlert(player1Name + ', pick a square.');
       }
     }
   });
