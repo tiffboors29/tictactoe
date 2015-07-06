@@ -3,6 +3,7 @@
 
 jQuery(document).ready(function() {
 
+
   // prompts for player names to be inputed in l-sidebar
   var player1Name = prompt('Player 1, what is your name?');
   $('#player1-name').text(player1Name);
@@ -10,19 +11,20 @@ jQuery(document).ready(function() {
   $('#player2-name').text(player2Name);
 
 
-  // function displays message in alert box above boardgame
+ //// had the following previously
+   // function displays message in alert box above boardgame
   var displayAlert = function(message) {
     $('#alertBox').html(message);
   };
 
-  // FIX ME
-  // add click function on 'New Game' button
-  $('#newGame').on('click', function() {
-    $('.default-tile').removeClass('x-layer').removeClass('o-layer');
-    count = 0;
-  });
+   // add reset function for automatic reset after game over
+  var reset = function() {
+    $('.x-layer').removeClass('x-layer');   // removes x layer classes
+    $('.o-layer').removeClass('o-layer');   // removes o layer classes
+    count = 0;          // resets count to zero
+  };
 
-  // FIX ME (NOT WORKING) -- stops after there's a winner, but doesn't display rest
+
   // checks tiles to determine if there's a winner
   var checkWinner = function(layer, player1, player2) {
     if (($('#tile1').hasClass(layer) && $('#tile2').hasClass(layer) && $('#tile3').hasClass(layer)) ||
@@ -67,19 +69,15 @@ jQuery(document).ready(function() {
         $(this).addClass('x-layer');
         count++;
         checkWinner('x-layer', player1Name, player2Name);
-        // displayAlert(player2Name + ', pick a square.');
       }
     } else {
       if (isAvailableTile($(this)) === true) {
         $(this).addClass('o-layer');
         count++;
         checkWinner('o-layer', player2Name, player1Name);
-        // displayAlert(player1Name + ', pick a square.');
       }
     }
   });
-
-
 
 
 
@@ -88,16 +86,17 @@ jQuery(document).ready(function() {
 
 
 
+///had above
+
+// FIX ME
+  // add click function on 'New Game' button
+  $('#newGame').on('click', function() {
+    $('.default-tile').removeClass('x-layer').removeClass('o-layer');
+    count = 0;
+  });
 
 
 
 
 
 
-// add reset function for automatic reset after game over
-// var reset = function() {
-  //   $('.x-layer').removeClass('x-layer');   // removes x layer classes
-  //   $('.o-layer').removeClass('o-layer');   // removes o layer classes
-  //   $('.default-tile').attr('data-move', '');
-  //   count = 0;                   // resets count to zero
-  // };
