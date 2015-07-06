@@ -1,6 +1,7 @@
 'use strict';
 
-// var setTurn = function() {  // randomly selects player 1 or 2 to go first
+// // randomly selects player 1 or 2 to go first
+// var setTurn = function() {
 //   var r = Math.random();
 //   if (r > 0.5) {
 //     turn = player1;
@@ -10,66 +11,77 @@
 //   return turn;
 // };
 
-
-
-
-// var getPlayer1Move = function() {
-//   $('#alertBox').html('Player 1, click on the square you want to play.');
-
-//   if ( $('#tileA').click) {
-//     $('#tileA').addClass('x-layer');
-//     tileA = 'x';
-//   } else if ($('#tileB').click) {
-//     $('#tileB').addClass('x-layer');
-//     tileB = 'x';
-//   } else if ($('#tileC').click) {
-//     $('#tileC').addClass('x-layer');
-//     tileC = 'x';
-//   } else if ($('#tileD').click) {
-//     $('#tileD').addClass('x-layer');
-//     tileD = 'x';
-//   } else if ($('#tileE').click) {
-//     $('#tileE').addClass('x-layer');
-//     tileE = 'x';
-//   } else if ($('#tileF').click) {
-//     $('#tileF').addClass('x-layer');
-//     tileF = 'x';
-//   } else if ($('#tileG').click) {
-//     $('#tileG').addClass('x-layer');
-//     tileG = 'x';
-//   } else if ($('#tileH').click) {
-//     $('#tileH').addClass('x-layer');
-//     tileH = 'x';
-//   } else if ($('#tileI').click) {
-//     $('#tileI').addClass('x-layer');
-//     tileI = 'x';
+// var tileAvailable = function(tile) {
+//   if (tile !== 'x' && tile !== 'o') {
+//     return true;
 //   }
 // };
 
-// var getPlayer2Move = function() {
-//   $('#alertBox').html('Player 2, click on the square you want to play.');
-
-//   if ( $('#tileA').click) {
-//     $('#tileA').addClass('o-layer');
-//   } else if ($('#tileB').click) {
-//     $('#tileB').addClass('o-layer');
-//   } else if ($('#tileC').click) {
-//     $('#tileC').addClass('o-layer');
-//   } else if ($('#tileD').click) {
-//     $('#tileD').addClass('o-layer');
-//   } else if ($('#tileE').click) {
-//     $('#tileE').addClass('o-layer');
-//   } else if ($('#tileF').click) {
-//     $('#tileF').addClass('o-layer');
-//   } else if ($('#tileG').click) {
-//     $('#tileG').addClass('o-layer');
-//   } else if ($('#tileH').click) {
-//     $('#tileH').addClass('o-layer');
-//   } else if ($('#tileI').click) {
-//     $('#tileI').addClass('o-layer');
-//   }
+// var player1Move = function() {
+//   $('#alertBox').html('Player 1, pick a box!');
+//   $('.default-tile').on('click', function() {
+//     if (isAvailableTile($(this))) { // if tile is available
+//       $(this).addClass('x-layer');  //calls player1Move   with arguments
+//       count++;  //increases count by 1
+//       checkWinner();
+//       player2Move();
+//     }
+//   });
 // };
 
+// var player2Move = function() {
+//   $('#alertBox').html('Player 2, pick a box!');
+//   $('.default-tile').on('click', function() {
+//     if (isAvailableTile($(this))) { // if tile is available
+//       $(this).addClass('o-layer');  //calls player1Move   with arguments
+//       count++;        //increases count by 1
+//       checkWinner();
+//     }
+//   });
+// };
+
+
+
+//   var hasWon = function(move) {
+//     if (($('#tile1').hasClass(move) && $('#tile2').hasClass(move) && $('#tile3').hasClass(move)) ||
+//         ($('#tile4').hasClass(move) && $('#tile5').hasClass(move) && $('#tile6').hasClass(move)) ||
+//         ($('#tile7').hasClass(move) && $('#tile8').hasClass(move) && $('#tile9').hasClass(move)) ||
+//         ($('#tile1').hasClass(move) && $('#tile4').hasClass(move) && $('#tile7').hasClass(move)) ||
+//         ($('#tile2').hasClass(move) && $('#tile5').hasClass(move) && $('#tile8').hasClass(move)) ||
+//         ($('#tile3').hasClass(move) && $('#tile6').hasClass(move) && $('#tile9').hasClass(move)) ||
+//         ($('#tile1').hasClass(move) && $('#tile5').hasClass(move) && $('#tile9').hasClass(move)) ||
+//         ($('#tile3').hasClass(move) && $('#tile5').hasClass(move) && $('#tile7').hasClass(move))) {
+//       return true;
+//     }
+//   };
+
+//   var checkWinner = function() {
+//     if (count < 5) {
+//       return;
+//     }
+//     if (hasWon('x-layer')) {
+//       xWins();
+//     } else if (hasWon('o-layer')) {
+//       oWins();
+//     } else if (count === 9) {
+//       cats();
+//     }
+//   };
+
+//   var xWins = function() {
+//     $('#alertBox').html('Player 1 Wins!');
+//     reset();
+//   };
+
+//   var oWins = function() {
+//     $('#alertBox').html('Player 2 Wins!');
+//     reset();
+//   };
+
+//   var cats = function() {
+//     $('#alertBox').html('Cat\'s Game. No Winners!');
+//     reset();
+//   };
 
 
 
@@ -90,29 +102,3 @@
 //   oWin = 0;
 //   newGame();
 // };
-
-
-
-
-
-
-
-
-// // sets tile values back to empty strings
-// var clearBoard = function() {
-//   tileA = "";
-//   tileB = "";
-//   tileC = "";
-//   tileD = "";
-//   tileE = "";
-//   tileF = "";
-//   tileG = "";
-//   tileH = "";
-//   tileI = "";
-//   xWin = 0;
-//   oWin = 0;
-//   newGame();
-// };
-
-
-
