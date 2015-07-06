@@ -9,75 +9,71 @@ jQuery(document).ready(function() {
   var player2Name = prompt('Player2, what is your name?');
   $('#player2-name').text(player2Name);
 
+
+  // function displays message in alert box above boardgame
+  var displayAlert = function(message) {
+    $('#alertBox').html(message);
+  };
+
+  // FIX ME (NOT WORKING)
+  // checks tiles to determine if there's a winner
+  var checkWinner = function(layer, player) {
+    if (($('#tile1').hasClass(layer) && $('#tile2').hasClass(layer) && $('#tile3').hasClass(layer)) ||
+        ($('#tile4').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile6').hasClass(layer)) ||
+        ($('#tile7').hasClass(layer) && $('#tile8').hasClass(layer) && $('#tile9').hasClass(layer)) ||
+        ($('#tile1').hasClass(layer) && $('#tile4').hasClass(layer) && $('#tile7').hasClass(layer)) ||
+        ($('#tile2').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile8').hasClass(layer)) ||
+        ($('#tile3').hasClass(layer) && $('#tile6').hasClass(layer) && $('#tile9').hasClass(layer)) ||
+        ($('#tile1').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile9').hasClass(layer)) ||
+        ($('#tile3').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile7').hasClass(layer))) {
+      displayAlert(player + ', You WON!');
+    } else if ( count === 9 ) {
+      displayAlert('Sorry, ' + player1Name + '&' + player2Name + '. Cat\'s Game!');
+    }
+  };
+
+  // FIX ME (NOT WORKING)
+  // detects if tile is filled or empty
+  var isAvailableTile = function($this) {
+    if ($(this).hasClass('x-layer') || $(this).hasClass('o-layer')) {
+      displayAlert('Please select a blank square');
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+
   // sets starting count of filled tiles at 0
   var count = 0;
 
+  displayAlert(player1Name + ', pick a square.');
+  // places x/o layers on clicked tiles
   $('.default-tile').on('click', function() {
-    if (count % 2 === 0) {
-      $(this).addClass('x-layer');
-      checkWinner('x-layer');
+    if (count === 0 || (count % 2 === 0)) {
+      if (isAvailableTile($(this)) === true) {
+        $(this).addClass('x-layer');
+        count++;
+        checkWinner('x-layer');
+        displayAlert(player2Name + ', pick a square.');
+      }
     } else {
-      $(this).addClass('o-layer');
-      checkWinner('o-layer');
+      if (isAvailableTile($(this)) === true) {
+        $(this).addClass('o-layer');
+        count++;
+        checkWinner('o-layer');
+        displayAlert(player1Name + ', pick a square.');
+      }
     }
-    count++;
   });
 
-  // checks tiles to determine if there's a winner
-  var checkWinner(player) {
-    if (($('#tile1').hasClass('x-layer') && $('#tile2').hasClass('x-layer') && $('#tile3').hasClass('x-layer')) ||
-        ($('#tile4').hasClass('x-layer') && $('#tile5').hasClass('x-layer') && $('#tile6').hasClass('x-layer')) ||
-        ($('#tile7').hasClass('x-layer') && $('#tile8').hasClass('x-layer') && $('#tile9').hasClass('x-layer')) ||
-        ($('#tile1').hasClass('x-layer') && $('#tile4').hasClass('x-layer') && $('#tile7').hasClass('x-layer')) ||
-        ($('#tile2').hasClass('x-layer') && $('#tile5').hasClass('x-layer') && $('#tile8').hasClass('x-layer')) ||
-        ($('#tile3').hasClass('x-layer') && $('#tile6').hasClass('x-layer') && $('#tile9').hasClass('x-layer')) ||
-        ($('#tile1').hasClass('x-layer') && $('#tile5').hasClass('x-layer') && $('#tile9').hasClass('x-layer')) ||
-        ($('#tile3').hasClass('x-layer') && $('#tile5').hasClass('x-layer') && $('#tile7').hasClass('x-layer'))) {
-      $('#alertBox').html('Player 1 Wins!');
-      var xWins;
-      xWins ++;
-    } else if (($('#tile1').hasClass('o-layer') && $('#tile2').hasClass('o-layer') && $('#tile3').hasClass('o-layer')) ||
-        ($('#tile4').hasClass('o-layer') && $('#tile5').hasClass('o-layer') && $('#tile6').hasClass('o-layer')) ||
-        ($('#tile7').hasClass('o-layer') && $('#tile8').hasClass('o-layer') && $('#tile9').hasClass('o-layer')) ||
-        ($('#tile1').hasClass('o-layer') && $('#tile4').hasClass('o-layer') && $('#tile7').hasClass('o-layer')) ||
-        ($('#tile2').hasClass('o-layer') && $('#tile5').hasClass('o-layer') && $('#tile8').hasClass('o-layer')) ||
-        ($('#tile3').hasClass('o-layer') && $('#tile6').hasClass('o-layer') && $('#tile9').hasClass('o-layer')) ||
-        ($('#tile1').hasClass('o-layer') && $('#tile5').hasClass('o-layer') && $('#tile9').hasClass('o-layer')) ||
-        ($('#tile3').hasClass('o-layer') && $('#tile5').hasClass('o-layer') && $('#tile7').hasClass('o-layer'))) {
-      var oWins;
-      oWins ++;
-    } else if ( count === 9 ) {
-      console.log('Cat\'s Game! No Winners!');
-    }
-  }
 
-  $('#newGame').on('click', function() {
-    $('.default-tile').removeClass('x-layer').removeClass('o-layer');
-  });
+
+
+
 });
 
 
-  // // detects if tile is filled or empty
-  // var isAvailableTile = function($this) {
-  //   if (! $(this).hasClass('x-layer') && ! $(this).hasClass('o-layer')) {
-  //     return true;
-  //   }
-  // };
-
-  // // FIX ME
-  // $('#newGame').on('click', function() {
-  //   $('.x-layer').removeClass('x-layer');   // removes x layer classes
-  //   $('.o-layer').removeClass('o-layer');   // removes o layer classes
-  //   $('.default-tile').attr('data-move', '');
-  //   count = 0;                   // resets count to zero
-  // });
-
-  // var reset = function() {
-  //   $('.x-layer').removeClass('x-layer');   // removes x layer classes
-  //   $('.o-layer').removeClass('o-layer');   // removes o layer classes
-  //   $('.default-tile').attr('data-move', '');
-  //   count = 0;                   // resets count to zero
-  // };
 
   // var player1Move = function() {
   //   $('#alertBox').html('Player 1, pick a box!');
@@ -104,44 +100,23 @@ jQuery(document).ready(function() {
 
 
 
-  // var hasWon = function(move) {
-  //   if (($('#tile1').hasClass(move) && $('#tile2').hasClass(move) && $('#tile3').hasClass(move)) ||
-  //       ($('#tile4').hasClass(move) && $('#tile5').hasClass(move) && $('#tile6').hasClass(move)) ||
-  //       ($('#tile7').hasClass(move) && $('#tile8').hasClass(move) && $('#tile9').hasClass(move)) ||
-  //       ($('#tile1').hasClass(move) && $('#tile4').hasClass(move) && $('#tile7').hasClass(move)) ||
-  //       ($('#tile2').hasClass(move) && $('#tile5').hasClass(move) && $('#tile8').hasClass(move)) ||
-  //       ($('#tile3').hasClass(move) && $('#tile6').hasClass(move) && $('#tile9').hasClass(move)) ||
-  //       ($('#tile1').hasClass(move) && $('#tile5').hasClass(move) && $('#tile9').hasClass(move)) ||
-  //       ($('#tile3').hasClass(move) && $('#tile5').hasClass(move) && $('#tile7').hasClass(move))) {
-  //     return true;
-  //   }
-  // };
 
-  // var checkWinner = function() {
-  //   if (count < 5) {
-  //     return;
-  //   }
-  //   if (hasWon('x-layer')) {
-  //     xWins();
-  //   } else if (hasWon('o-layer')) {
-  //     oWins();
-  //   } else if (count === 9) {
-  //     cats();
-  //   }
-  // };
 
-  // var xWins = function() {
-  //   $('#alertBox').html('Player 1 Wins!');
-  //   reset();
-  // };
 
-  // var oWins = function() {
-  //   $('#alertBox').html('Player 2 Wins!');
-  //   reset();
-  // };
 
-  // var cats = function() {
-  //   $('#alertBox').html('Cat\'s Game. No Winners!');
-  //   reset();
-  // };
 
+
+
+
+// add click function on 'New Game' button
+// $('#newGame').on('click', function() {
+//     $('.default-tile').removeClass('x-layer').removeClass('o-layer');
+//   });
+
+// add reset function for automatic reset after game over
+// var reset = function() {
+  //   $('.x-layer').removeClass('x-layer');   // removes x layer classes
+  //   $('.o-layer').removeClass('o-layer');   // removes o layer classes
+  //   $('.default-tile').attr('data-move', '');
+  //   count = 0;                   // resets count to zero
+  // };
