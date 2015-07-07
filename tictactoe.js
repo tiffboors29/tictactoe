@@ -19,7 +19,6 @@ var setTurn = function(player1Name, player2Name) {
 
 
 
-//// document ready ///////////
 
 $(document).ready(function() {
 
