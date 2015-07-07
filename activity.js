@@ -6,17 +6,14 @@ var displayAlert = function(message) {
 };
 
 var setTurn = function(player1Name, player2Name) {
-    var r = Math.random();
-    var x;
-    if (r > 0.5) {
-      displayAlert(player1Name + ', you will be X');
-      x = player1Name;
-    } else {
-      displayAlert(player2Name + ', you will be X');
-      x = player2Name;
-    }
-    return x;
-  };
+  var x;
+  if (Math.random() < 0.5) {
+    x = player1Name;
+  } else {
+    x = player2Name;
+  }
+  return x;
+};
 
 
 jQuery(document).ready(function() {
@@ -30,7 +27,7 @@ jQuery(document).ready(function() {
 
   var x = setTurn(player1Name, player2Name);
 
-  displayAlert(x + ', pick a square');
+  displayAlert(x + ', You will be X. Please pick a square');
 
   var count = 0;
 
