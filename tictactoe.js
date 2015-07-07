@@ -16,8 +16,14 @@ var setTurn = function(player1Name, player2Name) {
   return x;
 };
 
-
-
+// checks if tile is available
+var isAvailable = function(tile) {
+  if (tile.hasClass('x-layer') || tile.hasClass('o-layer')) {
+    return false;
+  } else {
+    return true;
+  }
+};
 
 
 $(document).ready(function() {
@@ -29,9 +35,7 @@ $(document).ready(function() {
   $('#player2-name').text(player2Name);
 
   var x = setTurn(player1Name, player2Name);
-
   displayAlert(x + ', You will be X. Please pick a square');
-
   var count = 0;
 
   // checks tiles to determine if there's a winner
@@ -54,39 +58,41 @@ $(document).ready(function() {
     }
   };
 
-  // FIX ME (NOT WORKING)
-  // detects if tile is filled or empty
-  var isAvailableTile = function($this) {
-    if ($(this).hasClass('x-layer') || $(this).hasClass('o-layer')) {
-      displayAlert('Please select a blank square');
-      return false;
-    } else {
-      return true;
-    }
-  };
 
 
   // places x/o layers on clicked tiles
   $('.default-tile').on('click', function() {
     if (count === 0 || (count % 2 === 0)) {
-      if (isAvailableTile($(this)) === true) {
-        if (x === player1Name) {
+      if (x === player1Name) {
+        if (isAvailable($(this)) === false) {
+          displayAlert(player1Name + ', that square is taken. Choose another.');
+        } else {
           $(this).addClass('x-layer');
           count++;
           checkWinner('x-layer', player1Name, player2Name);
-        } else if (x === player2Name) {
+        }
+      } else if (x === player2Name) {
+        if (isAvailable($(this)) === false) {
+          displayAlert(player2Name + ', that square is taken. Choose another.');
+        } else {
           $(this).addClass('x-layer');
           count++;
           checkWinner('x-layer', player2Name, player1Name);
         }
       }
     } else {
-     if (isAvailableTile($(this)) === true) {
-        if (x === player1Name) {
+      if (x === player1Name) {
+        if (isAvailable($(this)) === false) {
+          displayAlert(player2Name + ', that square is taken. Choose another.');
+        } else {
           $(this).addClass('o-layer');
           count++;
           checkWinner('o-layer', player2Name, player1Name);
-        } else if (x === player2Name) {
+        }
+      } else if (x === player2Name) {
+        if (isAvailable($(this)) === false) {
+          displayAlert(player1Name + ', that square is taken. Choose another.');
+        } else {
           $(this).addClass('o-layer');
           count++;
           checkWinner('o-layer', player1Name, player2Name);
@@ -98,6 +104,16 @@ $(document).ready(function() {
   $('#newGame').on('click', function() {
   window.location.reload(true);
   });
+
+  // checks if tile is available
+  var isAvailable = function(tile) {
+    if (tile.hasClass('x-layer') || tile.hasClass('o-layer')) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
 
 });
 
