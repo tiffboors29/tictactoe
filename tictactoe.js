@@ -101,9 +101,16 @@ $(document).ready(function() {
     }
   });
 
+  // reloads page for brand new game with new/different players
   $('#newGame').on('click', function() {
   window.location.reload(true);
   });
+
+  // FIX ME
+  // reloads page with saved data so same players can play multiple rounds
+  $('#playOpponentAgain').on('click', function() {
+
+  })
 
   // checks if tile is available
   var isAvailable = function(tile) {
