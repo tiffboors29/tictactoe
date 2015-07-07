@@ -5,18 +5,7 @@ var displayAlert = function(message) {
   $('#alertBox').html(message);
 };
 
-
-
-
-jQuery(document).ready(function() {
-
-  // prompts for player names to be inputed in l-sidebar
-  var player1Name = prompt('Player 1, what is your name?');
-  $('#player1-name').text(player1Name);
-  var player2Name = prompt('Player2, what is your name?');
-  $('#player2-name').text(player2Name);
-
-  var setTurn = function(player1Name, player2Name) {
+var setTurn = function(player1Name, player2Name) {
     var r = Math.random();
     var x;
     if (r > 0.5) {
@@ -29,7 +18,19 @@ jQuery(document).ready(function() {
     return x;
   };
 
-  displayAlert(player1Name + ', pick a square');
+
+jQuery(document).ready(function() {
+
+  // prompts for player names to be inputed in l-sidebar
+  var player1Name = prompt('Player 1, what is your name?');
+  $('#player1-name').text(player1Name);
+  var player2Name = prompt('Player2, what is your name?');
+  $('#player2-name').text(player2Name);
+
+
+  var x = setTurn(player1Name, player2Name);
+
+  displayAlert(x + ', pick a square');
 
   var count = 0;
 
@@ -41,13 +42,23 @@ jQuery(document).ready(function() {
           $(this).addClass('x-layer');
           count++;
           checkWinner('x-layer', player1Name, player2Name);
+        } else if (x === player2Name) {
+          $(this).addClass('x-layer');
+          count++;
+          checkWinner('x-layer', player2Name, player1Name);
         }
       }
     } else {
      if (isAvailableTile($(this)) === true) {
-        $(this).addClass('o-layer');
-        count++;
-        checkWinner('o-layer', player2Name, player1Name);
+        if (x === player1Name) {
+          $(this).addClass('o-layer');
+          count++;
+          checkWinner('o-layer', player2Name, player1Name);
+        } else if (x === player2Name) {
+          $(this).addClass('o-layer');
+          count++;
+          checkWinner('o-layer', player1Name, player2Name);
+        }
       }
     }
   });
