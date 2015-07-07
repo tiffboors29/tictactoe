@@ -1,8 +1,13 @@
 'use strict';
 
+// function displays message in alert box above boardgame
+var displayAlert = function(message) {
+  $('#alertBox').html(message);
+};
+
+
 
 jQuery(document).ready(function() {
-
 
   // prompts for player names to be inputed in l-sidebar
   var player1Name = prompt('Player 1, what is your name?');
@@ -11,18 +16,29 @@ jQuery(document).ready(function() {
   $('#player2-name').text(player2Name);
 
 
- //// had the following previously
-   // function displays message in alert box above boardgame
-  var displayAlert = function(message) {
-    $('#alertBox').html(message);
-  };
+  displayAlert(player1Name + ', pick a square');
 
-   // add reset function for automatic reset after game over
-  var reset = function() {
-    $('.x-layer').removeClass('x-layer');   // removes x layer classes
-    $('.o-layer').removeClass('o-layer');   // removes o layer classes
-    count = 0;          // resets count to zero
-  };
+  var count = 0;
+
+  // places x/o layers on clicked tiles
+  $('.default-tile').on('click', function() {
+    if (count === 0 || (count % 2 === 0)) {
+      if (isAvailableTile($(this)) === true) {
+        $(this).addClass('x-layer');
+        count++;
+        checkWinner('x-layer', player1Name, player2Name);
+      }
+    } else {
+     if (isAvailableTile($(this)) === true) {
+        $(this).addClass('o-layer');
+        count++;
+        checkWinner('0-layer', player2Name, player1Name);
+      }
+    }
+  });
+
+
+
 
 
   // checks tiles to determine if there's a winner
@@ -39,7 +55,7 @@ jQuery(document).ready(function() {
       displayAlert(player1 + ', You WON!');
     } else if ( count === 9 ) {
       $('.default-tile').off('click');
-      displayAlert('Sorry, ' + player1Name + ' & ' + player2Name + '. Cat\'s Game!');
+      displayAlert('Sorry '+ player1 + ' & ' + player2 + ', Cat\'s Game!');
     } else if (count < 9) {
       displayAlert(player2 + ', pick a square');
     }
@@ -56,47 +72,9 @@ jQuery(document).ready(function() {
     }
   };
 
-
-
-  // sets starting count of filled tiles at 0
-  var count = 0;
-
-  displayAlert(player1Name + ', pick a square');
-  // places x/o layers on clicked tiles
-  $('.default-tile').on('click', function() {
-    if (count === 0 || (count % 2 === 0)) {
-      if (isAvailableTile($(this)) === true) {
-        $(this).addClass('x-layer');
-        count++;
-        checkWinner('x-layer', player1Name, player2Name);
-      }
-    } else {
-      if (isAvailableTile($(this)) === true) {
-        $(this).addClass('o-layer');
-        count++;
-        checkWinner('o-layer', player2Name, player1Name);
-      }
-    }
-  });
-
-
-
 });
 
 
 
-
-///had above
-
-// FIX ME
-  // add click function on 'New Game' button
-  $('#newGame').on('click', function() {
-    $('.default-tile').removeClass('x-layer').removeClass('o-layer');
-    count = 0;
-  });
-
-
-
-
-
-
+// NEED RESTART GAME FUNCTION
+// NEED NEW GAME BUTTON TO CLICK
