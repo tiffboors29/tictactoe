@@ -7,6 +7,7 @@ var displayAlert = function(message) {
 
 
 
+
 jQuery(document).ready(function() {
 
   // prompts for player names to be inputed in l-sidebar
@@ -15,6 +16,18 @@ jQuery(document).ready(function() {
   var player2Name = prompt('Player2, what is your name?');
   $('#player2-name').text(player2Name);
 
+  var setTurn = function(player1Name, player2Name) {
+    var r = Math.random();
+    var x;
+    if (r > 0.5) {
+      displayAlert(player1Name + ', you will be X');
+      x = player1Name;
+    } else {
+      displayAlert(player2Name + ', you will be X');
+      x = player2Name;
+    }
+    return x;
+  };
 
   displayAlert(player1Name + ', pick a square');
 
@@ -24,9 +37,11 @@ jQuery(document).ready(function() {
   $('.default-tile').on('click', function() {
     if (count === 0 || (count % 2 === 0)) {
       if (isAvailableTile($(this)) === true) {
-        $(this).addClass('x-layer');
-        count++;
-        checkWinner('x-layer', player1Name, player2Name);
+        if (x === player1Name) {
+          $(this).addClass('x-layer');
+          count++;
+          checkWinner('x-layer', player1Name, player2Name);
+        }
       }
     } else {
      if (isAvailableTile($(this)) === true) {
