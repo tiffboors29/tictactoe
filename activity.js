@@ -32,12 +32,14 @@ jQuery(document).ready(function() {
      if (isAvailableTile($(this)) === true) {
         $(this).addClass('o-layer');
         count++;
-        checkWinner('0-layer', player2Name, player1Name);
+        checkWinner('o-layer', player2Name, player1Name);
       }
     }
   });
 
-
+  $('#newGame').on('click', function() {
+  window.location.reload(true);
+  });
 
 
 
@@ -52,10 +54,10 @@ jQuery(document).ready(function() {
         ($('#tile1').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile9').hasClass(layer)) ||
         ($('#tile3').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile7').hasClass(layer))) {
       $('.default-tile').off('click');
-      displayAlert(player1 + ', You WON!');
+      displayAlert(player1 + ', You WON! Click "New Game" to play again');
     } else if ( count === 9 ) {
       $('.default-tile').off('click');
-      displayAlert('Sorry '+ player1 + ' & ' + player2 + ', Cat\'s Game!');
+      displayAlert('Sorry '+ player1 + ' & ' + player2 + ', Cat\'s Game! Click "New Game" to play again');
     } else if (count < 9) {
       displayAlert(player2 + ', pick a square');
     }
@@ -76,5 +78,5 @@ jQuery(document).ready(function() {
 
 
 
-// NEED RESTART GAME FUNCTION
-// NEED NEW GAME BUTTON TO CLICK
+
+// BEST OF FIVE?
