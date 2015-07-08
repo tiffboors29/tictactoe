@@ -1,5 +1,8 @@
 'use strict';
 
+var ss = require(simpleStorage.js)
+
+
 // displays 'message' in alert box above boardgame
 var displayAlert = function(message) {
   $('#alertBox').html(message);
