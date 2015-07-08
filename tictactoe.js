@@ -15,6 +15,7 @@ var displayScore = function(score) {
 // randomly selects player to be 'x' and go first
 var setTurn = function(player1Name, player2Name) {
   var x;
+  var o;
   if (Math.random() < 0.5) {
     x = player1Name;
   } else {
@@ -45,7 +46,14 @@ $(document).ready(function() {
   $('#player1-name').text(player1Name);
   var player2Name = prompt('Player2, what is your name?');
   $('#player2-name').text(player2Name);
+
   var x = setTurn(player1Name, player2Name);
+  var o;
+  if (x === player1Name) {
+    o = player2Name;
+  } else {
+    o = player1Name;
+  }
 
   displayAlert(x + ', You will be X. Please pick a square');
 
@@ -70,6 +78,13 @@ $(document).ready(function() {
 
     // randomly set x (the player who goes first)
     var x = setTurn(player1Name, player2Name);
+    var o;
+    if (x === player1Name) {
+      o = player2Name;
+    } else {
+     o = player1Name;
+    }
+
     displayAlert(x + ', You will be X. Please pick a square');
     var count = 0;
 
