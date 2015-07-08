@@ -1,11 +1,22 @@
 'use strict';
 
-var ss = require(simpleStorage.js)
+// var ss = require('simpleStorage.js');
+// if (!ss.storage.score) {
+//   ss.storage.score = [];
+// }
+
+
 
 
 // displays 'message' in alert box above boardgame
 var displayAlert = function(message) {
   $('#alertBox').html(message);
+};
+
+
+// displays 'score' in scorebox in r-sidebar
+var displayScore = function(score) {
+  $('#scoreBox').html(score);
 };
 
 // randomly selects player to be 'x' and go first
@@ -41,6 +52,9 @@ $(document).ready(function() {
   displayAlert(x + ', You will be X. Please pick a square');
   var count = 0;
 
+  var player1NameWins = 0;    // trying to add to [] for ss.storage.score
+  var player2NameWins = 0;    // ''
+
   // checks tiles to determine if there's a winner
   var checkWinner = function(layer, player1, player2) {
     if (($('#tile1').hasClass(layer) && $('#tile2').hasClass(layer) && $('#tile3').hasClass(layer)) ||
@@ -53,6 +67,12 @@ $(document).ready(function() {
         ($('#tile3').hasClass(layer) && $('#tile5').hasClass(layer) && $('#tile7').hasClass(layer))) {
       $('.default-tile').off('click');
       displayAlert(player1 + ', You WON! Click "New Game" to play again');
+      if (player1 === player1Name) {
+        player1NameWins++;
+      } else {
+        player2NameWins++;
+      }
+      displayScore(player1Name + ': ' + player1NameWins + ' ' + player2Name + ': ' + player2NameWins);
     } else if ( count === 9 ) {
         $('.default-tile').off('click');
       displayAlert('Sorry '+ player1 + ' & ' + player2 + ', Cat\'s Game! Click "New Game" to play again');

@@ -53,6 +53,7 @@ h1 {
 
 #player1Name p {
   border: 2px dashed #664147;
+  font-size: 16px;
 }
 
 #player2Name {
@@ -66,6 +67,7 @@ h1 {
 
 #player2Name p {
   border: 2px dashed #664147;
+  font-size: 16px;
 }
 
 #center {
@@ -219,7 +221,7 @@ h1 {
 }
 
 
-#bestOfFive {
+#currentScore {
   background-color: #e5f9e0;
   padding: 1%;
   text-align: center;
@@ -236,6 +238,7 @@ h1 {
   border: 2px;
   width: 90%;
   height: 20%;
+  font-size: 16px;
 }
 
 #scoreBox p {
