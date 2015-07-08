@@ -1,47 +1,89 @@
 'use strict';
 
 
-// displays 'message' in alert box above boardgame
-var displayAlert = function(message) {
-  $('#alertBox').html(message);
-};
+// // displays 'message' in alert box above boardgame
+// var displayAlert = function(message) {
+//   $('#alertBox').html(message);
+// };
 
 
-// displays 'score' in scorebox in r-sidebar
-var displayScore = function(score) {
-  $('#scoreBox').html(score);
-};
+// // displays 'score' in scorebox in r-sidebar
+// var displayScore = function(score) {
+//   $('#scoreBox').html(score);
+// };
 
-// randomly selects player to be 'x' and go first
-var setTurn = function(player1Name, player2Name) {
-  var x;
-  var o;
-  if (Math.random() < 0.5) {
-    x = player1Name;
-  } else {
-    x = player2Name;
-  }
-  return x;
-};
+// // randomly selects player to be 'x' and go first
+// var setTurn = function(player1Name, player2Name) {
+//   var x;
+//   var o;
+//   if (Math.random() < 0.5) {
+//     x = player1Name;
+//   } else {
+//     x = player2Name;
+//   }
+//   return x;
+// };
 
-// checks if tile is available
-var isAvailable = function(tile) {
-  if (tile.hasClass('x-layer') || tile.hasClass('o-layer')) {
-    return false;
-  } else {
-    return true;
-  }
-};
+// // checks if tile is available
+// var isAvailable = function(tile) {
+//   if (tile.hasClass('x-layer') || tile.hasClass('o-layer')) {
+//     return false;
+//   } else {
+//     return true;
+//   }
+// };
 
-// variables store wins to be displayed in scoreBox when same users
-// play multiple games
-var player1NameWins = 0;
-var player2NameWins = 0;
 
 
 $(document).ready(function() {
 
-  // prompts for player names to be inputed in l-sidebar
+  // displays 'message' in alert box above boardgame
+  var displayAlert = function(message) {
+    $('#alertBox').html(message);
+  };
+
+
+  // displays 'score' in scorebox in r-sidebar
+  var displayScore = function(score) {
+    $('#scoreBox').html(score);
+  };
+
+  // randomly selects player to be 'x' and go first
+  var setTurn = function(player1Name, player2Name) {
+    var x;
+    var o;
+    if (Math.random() < 0.5) {
+      x = player1Name;
+    } else {
+      x = player2Name;
+    }
+    return x;
+  };
+
+  // checks if tile is available
+  var isAvailable = function(tile) {
+    if (tile.hasClass('x-layer') || tile.hasClass('o-layer')) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+
+
+  // displays 'message' in alert box above boardgame
+  var displayAlert = function(message) {
+    $('#alertBox').html(message);
+  };
+
+
+  // displays 'score' in scorebox in r-sidebar
+  var displayScore = function(score) {
+    $('#scoreBox').html(score);
+  };
+
+
+ // prompts for player names to be inputed in l-sidebar
   var player1Name = prompt('Player 1, what is your name?');
   $('#player1-name').text(player1Name);
   var player2Name = prompt('Player2, what is your name?');
