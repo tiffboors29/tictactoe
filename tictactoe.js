@@ -1,52 +1,8 @@
 'use strict';
 
 
-// // displays 'message' in alert box above boardgame
-// var displayAlert = function(message) {
-//   $('#alertBox').html(message);
-// };
-
-
-// // displays 'score' in scorebox in r-sidebar
-// var displayScore = function(score) {
-//   $('#scoreBox').html(score);
-// };
-
-// // randomly selects player to be 'x' and go first
-// var setTurn = function(player1Name, player2Name) {
-//   var x;
-//   var o;
-//   if (Math.random() < 0.5) {
-//     x = player1Name;
-//   } else {
-//     x = player2Name;
-//   }
-//   return x;
-// };
-
-// // checks if tile is available
-// var isAvailable = function(tile) {
-//   if (tile.hasClass('x-layer') || tile.hasClass('o-layer')) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// };
-
-
-
 $(document).ready(function() {
 
-  // displays 'message' in alert box above boardgame
-  var displayAlert = function(message) {
-    $('#alertBox').html(message);
-  };
-
-
-  // displays 'score' in scorebox in r-sidebar
-  var displayScore = function(score) {
-    $('#scoreBox').html(score);
-  };
 
   // randomly selects player to be 'x' and go first
   var setTurn = function(player1Name, player2Name) {
@@ -88,6 +44,7 @@ $(document).ready(function() {
   $('#player1-name').text(player1Name);
   var player2Name = prompt('Player2, what is your name?');
   $('#player2-name').text(player2Name);
+
 
   var x = setTurn(player1Name, player2Name);
   var o;
