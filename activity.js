@@ -38,6 +38,9 @@ $(document).ready(function() {
 
 
 
+
+
+
 // $('#playComp').on('click', function() {
 
 
@@ -46,7 +49,7 @@ $(document).ready(function() {
 //       if (isAvailable($('#tile2')) === true) {
 //         $('#tile2').addClass('o-layer');
 //       } else {
-//         find($('.default-tile')).addClass('o-layer');
+//         find(($('.default-tile')).addClass('o-layer');
 //       }
 
 //     } else if ($('#tile1').hasClass('x-layer') && $('#tile7').hasClass('x-layer')) {

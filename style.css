@@ -171,47 +171,47 @@ h1 {
 }
 
 
-#tile1 {
+.tile0 {
   margin-top: 6%;
   margin-left: 6%;
 }
 
-#tile2 {
+.tile1 {
   margin-top: 6%;
   margin-left: 5%;
   margin-right: 5%;
 }
 
-#tile3 {
+.tile2 {
   margin-top: 6%;
 }
 
-#tile4 {
+.tile3 {
   margin-top: 6%;
   margin-left: 6%;
 }
 
-#tile5 {
+.tile4 {
   margin-top: 6%;
   margin-left: 5%;
   margin-right: 5%;
 }
 
-#tile6 {
+.tile5 {
   margin-top: 6%;
 }
 
-#tile7 {
+.tile6 {
   margin-top: 5%;
   margin-bottom: 5%;
   margin-left: 6%;
 }
 
-#tile8 {
+.tile7 {
   margin: 5%;
 }
 
-#tile9 {
+.tile8 {
   margin-top: 5%;
   margin-bottom: 5%;
 }
