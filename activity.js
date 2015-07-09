@@ -1,7 +1,41 @@
 'use strict';
 
+ // displays 'message' in alert box above boardgame
+  var displayAlert = function(message) {
+    $('#alertBox').html(message);
+  };
+
+
+  // displays 'score' in scorebox in r-sidebar
+  var displayScore = function(score) {
+    $('#scoreBox').html(score);
+  };
+
+
+
 $(document).ready(function() {
+
+  // reloads page for brand new game with new/different players
+  $('#newGame').on('click', function() {
+    window.location.reload(true);
+  });
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // $('#playComp').on('click', function() {
