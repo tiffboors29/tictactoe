@@ -4,6 +4,8 @@
 var board = ['', '', '', '', '', '', '', '', ''];
 var count = 0;
 
+
+
 var getInput = function() {
   console.log('Please choose a square.');
   return prompt();
@@ -19,7 +21,7 @@ var setTurn = function(player1Name, player2Name) {
     o = player2Name;
   } else {
     x = player2Name;
-    o = player1Name
+    o = player1Name;
   }
   return x, o;
 };
@@ -38,23 +40,13 @@ var isAvailable = function(index) {
 
 // sets move for player x if tile is available
 var setX = function(index) {
-  if (isAvailable(index) === false) {
-      return false;
-    } else {
-      return board[index] = 'x';
-      // $this.addClass('x-layer');
-    }
+  board[index] = 'x';
 };
 
 
 // sets move for player o if tile is available
 var setO = function(index) {
-  if (isAvailable(index) === false) {
-      return false;
-    } else {
-      return board[index] = 'o';
-      // $this.addClass('o-layer');
-    }
+  return board[index] = 'o';
 };
 
 // get player x's move
@@ -133,38 +125,27 @@ var checkDiag = function() {
 };
 
 
-
-var playGame = function() {
-  console.log('Lets play tic tac toe');
-  while (checkWinner() === false) {
-    if (count === 0 || (count % 2 === 0)) {
-      setX(getMoveX());
-      count++;
-      checkWinner();
-    } else {
-      setO(getMoveO());
-      count++;
-      checkWinner();
-    }
-  }
-};
-
-
-
+// // used when playing in console only
+// var playGame = function() {
+//   initGame();
+//   // console.log('Lets play tic tac toe');
+//   while (checkWinner() === false) {
+//     if (count === 0 || (count % 2 === 0)) {
+//       setX(getMoveX());
+//       count++;
+//       checkWinner();
+//     } else {
+//       setO(getMoveO());
+//       count++;
+//       checkWinner();
+//     }
+//   }
+// };
 
 
 
 
 
-
-$('.default-tile').off('click');
-    displayAlert(player1 + ', You WON! Click "Play Again" to play again or "New Game" to restart');
-
-
- displayAlert('Sorry '+ player1 + ' & ' + player2 + ', Cat\'s Game! Click "Play Again" to pagain or "New Game" to restart');
-
-
- displayAlert(player2 + ', pick a square');
 
 // ////// manual modual pattern
 

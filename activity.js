@@ -11,6 +11,11 @@
     $('#scoreBox').html(score);
   };
 
+// clears board of x/o css classes
+var showClearBoard = function() {
+  $('.default-tile').removeClass('o-layer');
+  $('.default-tile').removeClass('x-layer');
+};
 
 
 $(document).ready(function() {
@@ -18,6 +23,15 @@ $(document).ready(function() {
   // reloads page for brand new game with new/different players
   $('#newGame').on('click', function() {
     window.location.reload(true);
+  });
+
+
+
+
+  // clears board of x/o css classes
+  var showClearBoard = (function() {
+   $('.default-tile').removeClass('o-layer');
+   $('.default-tile').removeClass('x-layer');
   });
 
 });

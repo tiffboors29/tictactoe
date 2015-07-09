@@ -34,23 +34,39 @@ $(document).ready(function() {
 
   // places x or o layers on clicked tiles
   $('.default-tile').on('click', function() {
-    var i = this.id;
-    if (count === 0 || (count % 2 === 0)) {
-      moveX($(this), x, o);
-      board[i] = 'x';
-      count++;
-      checkWinner(count, 'x-layer', x, o);
-      if (checkWinner(count, 'x-layer', x, o) === true) {
-        (x === player1Name) ? player1NameWins++ : player2NameWins++;
+    var i = $(this).attr('id');
+      if (count === 0 || count %2 === 0) {
+        if (isAvailable(i) === false) {
+          displayAlert('That square is taken. ' + x + ', choose another.');
+        } else {
+          $(this).addClass('x-layer');
+          console.log(i);
+          setX(i);
+          console.log(board);
+          count++;
+          if (checkWinner() === false) {
+            displayAlert(o + ', your turn. Pick a square.');
+          } else {
+            checkWinner();
+            displayAlert(winner + ', YOU WON!');
+          }
+        }
+      } else {
+        if (isAvailable(i) === false) {
+          displayAlert('That square is taken. ' + o + ', choose another.');
+          $(this).addClass('o-layer');
+          console.log(i);
+          setO(i);
+          console.log(board);
+          count++;
+          if (checkWinner() === false) {
+            displayAlert(o + ', your turn. Pick a square.');
+          } else {
+            checkWinner();
+            displayAlert(winner + ', YOU WON!');
+          }
+        }
       }
-    } else {
-      moveO($(this), x, o);
-      board[i] = 'o';
-      count++;
-      if (checkWinner(count, 'o-layer', o, x) === true) {
-        (o === player1Name) ? player1NameWins++ : player2NameWins++;
-      }
-    } console.log(board);
   });
 
 
@@ -59,9 +75,11 @@ $(document).ready(function() {
   // clears board so same players can play again and scores are saved///////////////////
   $('#playAgain').on('click', function() {
 
-    // clears board to play again
-    $('.default-tile').removeClass('o-layer');
-    $('.default-tile').removeClass('x-layer');
+    // // clears board to play                 // added to activity.js
+    // $('.default-tile').removeClass('o-layer');
+    // $('.default-tile').removeClass('x-layer');
+    showClearBoard();
+
 
     // sets count to 0, board values at '' , randomly chooses player to be x and go first
     var count = 0;
@@ -73,32 +91,47 @@ $(document).ready(function() {
     // displays current score between the players
     displayScore(player1Name + ': ' + player1NameWins + ' ' + player2Name + ': ' + player2NameWins);
 
-    // sets turn count
-    var count = 0;
-
     // tells player x to go first
     displayAlert(x + ', You will be X. Please pick a square');
 
 
     // places x or o layers on clicked tiles
     $('.default-tile').on('click', function() {
-      var i = this.id;
-      if (count === 0 || (count % 2 === 0)) {
-        moveX($(this), x, o);
-        board[i] = 'x';
-        count++;
-        if (checkWinner(count, 'x-layer', x, o) === true) {
-          (x === player1Name) ? player1NameWins++ : player2NameWins++;
+      var i = $(this).attr('id');
+      if (count === 0 || count %2 === 0) {
+        if (isAvailable(i) === false) {
+          displayAlert('That square is taken. ' + x + ', choose another.');
+        } else {
+          $(this).addClass('x-layer');
+          console.log(i);
+          setX(i);
+          console.log(board);
+          count++;
+          if (checkWinner() === false) {
+            displayAlert(o + ', your turn. Pick a square.');
+          } else {
+            checkWinner();
+            displayAlert(winner + ', YOU WON!');
+          }
         }
       } else {
-        moveO($(this), x, o);
-        board[i] = 'o';
-        count++;
-        if (checkWinner(count, 'o-layer', o, x) === true) {
-          (o === player1Name) ? player1NameWins++ : player2NameWins++;
+        if (isAvailable(i) === false) {
+          displayAlert('That square is taken. ' + o + ', choose another.');
+          $(this).addClass('o-layer');
+          console.log(i);
+          setO(i);
+          console.log(board);
+          count++;
+          if (checkWinner() === false) {
+            displayAlert(o + ', your turn. Pick a square.');
+          } else {
+            checkWinner();
+            displayAlert(winner + ', YOU WON!');
+          }
         }
-      } console.log(board);
+      }
     });
+
   });
 
 
