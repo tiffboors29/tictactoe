@@ -83,6 +83,7 @@ $(document).ready(function() {
       }
       displayAlert(x + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
       showWin('x', 'win-tile-x');
+      $('.default-tile').off('click');
     } else if (checkWinner() === 'o') {
       if (o === player1Name) {
         player1NameWins +=1;
@@ -91,8 +92,12 @@ $(document).ready(function() {
       }
       displayAlert(o + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
       showWin('o', 'win-tile-o');
+      $('.default-tile').off('click');
     } else if (checkWinner() ===  'cats') {
       displayAlert('Draw! No Winners! Click "Play Again" to play the same user or "New Game" to restart.');
+      $('.x-layer').addClass('win-tile-x');
+      $('.o-layer').addClass('win-tile-o');
+      $('.default-tile').off('click');
     }
   });
 
@@ -168,6 +173,73 @@ $(document).ready(function() {
 
     // tells player x to go first
     displayAlert(x + ', You will be X. Please pick a square');
+
+
+    // creates click handler and directs game flow
+  // using functions from game-logic.js
+  $('.default-tile').on('click', function() {
+    var i = $(this).attr('id');
+    if (count === 0 || (count % 2 === 0)) {
+        if (isAvailable(i) === true) {
+          $(this).addClass('x-layer');
+          setX(i);
+          count++
+          console.log(i, board);
+        }
+    } else {
+      if (isAvailable(i) === true) {
+          $(this).addClass('o-layer');
+          setO(i);
+          count++;
+          console.log(i, board);
+      }
+    }
+    // checks for winners, cats or to continue game
+    if (checkWinner() === false) {
+      if (count === 0 || (count % 2 === 0)) {
+        displayAlert('Player X-' + x + ', pick an empty square');
+      } else {
+        displayAlert('Player O-' + o + ', pick an empty square');
+      }
+    } else if (checkWinner() === 'x') {
+      if (x === player1Name) {
+        player1NameWins +=1;
+      } else {
+        player2NameWins +=1;
+      }
+      displayAlert(x + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
+      showWin('x', 'win-tile-x');
+      $('.default-tile').off('click');
+    } else if (checkWinner() === 'o') {
+      if (o === player1Name) {
+        player1NameWins +=1;
+      } else {
+        player2NameWins +=1;
+      }
+      displayAlert(o + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
+      showWin('o', 'win-tile-o');
+      $('.default-tile').off('click');
+    } else if (checkWinner() ===  'cats') {
+      displayAlert('Draw! No Winners! Click "Play Again" to play the same user or "New Game" to restart.');
+      $('.x-layer').addClass('win-tile-x');
+      $('.o-layer').addClass('win-tile-o');
+      $('.default-tile').off('click');
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   });
 
 });
