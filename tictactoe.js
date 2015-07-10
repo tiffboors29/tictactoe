@@ -76,11 +76,19 @@ $(document).ready(function() {
         displayAlert('Player O-' + o + ', pick an empty square');
       }
     } else if (checkWinner() === 'x') {
-      player1NameWins++;
+      if (x === player1Name) {
+        player1NameWins +=1;
+      } else {
+        player2NameWins +=1;
+      }
       displayAlert(x + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
       $('.x-layer').addClass('win-tile-x');
     } else if (checkWinner() === 'o') {
-      player2NameWins++;
+      if (o === player1Name) {
+        player1NameWins +=1;
+      } else {
+        player2NameWins +=1;
+      }
       displayAlert(o + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
       $('.o-layer').addClass('win-tile-o');
     } else if (checkWinner() ===  'cats') {
@@ -92,7 +100,7 @@ $(document).ready(function() {
 
 
   //////////////////////////////////////////////////////////////////
-  // clears board so same players can play again and scores are saved///////////////////
+  // clears board so same players can play again and scores are saved
   $('#playAgain').on('click', function() {
 
     board = ['', '', '', '', '', '', '', '', ''];
@@ -113,53 +121,11 @@ $(document).ready(function() {
       o = player1Name;
     }
 
-
     // displays current score between the players
     displayScore(player1Name + ': ' + player1NameWins + ' ' + player2Name + ': ' + player2NameWins);
 
     // tells player x to go first
     displayAlert(x + ', You will be X. Please pick a square');
-
-
-      // creates click handler and directs game flow
-    // using functions from game-logic.js
-    $('.default-tile').on('click', function() {
-      var i = $(this).attr('id');
-      if (count === 0 || (count % 2 === 0)) {
-          if (isAvailable(i) === true) {
-            $(this).addClass('x-layer');
-            setX(i);
-            count++
-            console.log(i, board);
-          }
-      } else {
-        if (isAvailable(i) === true) {
-            $(this).addClass('o-layer');
-            setO(i);
-            count++;
-            console.log(i, board);
-        }
-      }
-      // checks for winners, cats or to continue game
-      if ((checkWinner() === false) && (count < 9)) {
-        if (count === 0 || (count % 2 === 0)) {
-          displayAlert('Player X-' + x + ', pick an empty square');
-        } else {
-          displayAlert('Player O-' + o + ', pick an empty square');
-        }
-      } else if (checkWinner() === 'x') {
-        player1NameWins++;
-        displayAlert(x + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
-        $('.x-layer').addClass('win-tile-x');
-      } else if (checkWinner() === 'o') {
-        player2NameWins++;
-        displayAlert(o + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
-        $('.o-layer').addClass('win-tile-o');
-      } else if (checkWinner() ===  'cats') {
-        displayAlert('Draw! No Winners! Click "Play Again" to play the same user or "New Game" to restart.');
-      }
-    });
-
   });
 
 });
