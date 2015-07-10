@@ -116,7 +116,8 @@ h1 {
   margin-right: auto;
   margin-top: 2%;
   border: 2px dashed #664147;
-  padding-top: 6%;
+  padding-top: 3%;
+  padding-bottom: 2%;
   text-align: center;
   font-family:'Indie Flower', cursive;
   color: #664147;
@@ -253,20 +254,3 @@ h1 {
   border: 2px dashed #664147;
   background-color: #a3f7b5;
 }
-
-#playComp {
-  background-color: #e5f9e0;
-  padding: 1%;
-  text-align: center;
-  font-family:'Indie Flower', cursive;
-  color: #664147;
-  margin-bottom: 10px;
-}
-
-#playComp:hover {
-  border: 2px dashed #664147;
-  background-color: #a3f7b5;
-}
-
-
-
