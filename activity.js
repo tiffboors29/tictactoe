@@ -1,6 +1,22 @@
 'use strict';
 
- // displays 'message' in alert box above boardgame
+
+
+$(document).ready(function() {
+
+  // gets names from players to use throughout the game
+  var player1Name = getPlayer1Name();
+  $('#player1-name').text(player1Name);
+  var player2Name = getPlayer2Name();
+  $('#player2-name').text(player2Name);
+
+
+  // reloads page for brand new game with new/different players
+  $('#newGame').on('click', function() {
+    window.location.reload(true);
+  });
+
+  // displays 'message' in alert box above boardgame
   var displayAlert = function(message) {
     $('#alertBox').html(message);
   };
@@ -11,28 +27,72 @@
     $('#scoreBox').html(score);
   };
 
-// clears board of x/o css classes
-var showClearBoard = function() {
-  $('.default-tile').removeClass('o-layer');
-  $('.default-tile').removeClass('x-layer');
-};
 
-
-$(document).ready(function() {
-
-  // reloads page for brand new game with new/different players
-  $('#newGame').on('click', function() {
-    window.location.reload(true);
-  });
-
-
-
-
+  // FIX message//////////////
   // clears board of x/o css classes
-  var showClearBoard = (function() {
-   $('.default-tile').removeClass('o-layer');
-   $('.default-tile').removeClass('x-layer');
+  var showClearBoard = function() {
+    $('.default-tile').removeClass('o-layer');
+    $('.default-tile').removeClass('x-layer');
+  };
+
+
+  // randomly selects player to be x and go first
+  var x = setTurn(player1Name, player2Name);
+  var o;
+  if (x === player1Name) {
+    o = player2Name;
+  } else {
+    o = player1Name;
+  }
+
+
+  // starts # of wins per player at 0
+  var player1NameWins = 0;
+  var player2NameWins = 0;
+
+
+  // alerts x to start the game with the first move
+  displayAlert(x + ', you are x. Pick a square.');
+
+
+  // creates click handler and directs game flow
+  // using functions from game-logic.js
+  $('.default-tile').on('click', function() {
+    var i = $(this).attr('id');
+    if (count === 0 || (count % 2 === 0)) {
+        if (isAvailable(i) === true) {
+          $(this).addClass('x-layer');
+          setX(i);
+          count++
+          console.log(i, board);
+        }
+    } else {
+      if (isAvailable(i) === true) {
+          $(this).addClass('o-layer');
+          setO(i);
+          count++;
+          console.log(i, board);
+        }
+    }
+    // checks for winners, cats or to continue game
+    if (checkWinner() === false) {
+      if (count === 0 || (count % 2 === 0)) {
+        displayAlert(x + ', pick a square');
+      } else {
+        displayAlert(o + ', pick a square');
+      }
+    } else if (checkWinner() === 'x') {
+      $('.default-tile').off('click');
+      displayAlert(x + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
+    } else if (checkWinner() === 'o') {
+      $('.default-tile').off('click');
+      displayAlert(o + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
+    } else if (checkWinner() ===  'cats') {
+      $('.default-tile').off('click');
+      displayAlert('Draw! No Winners! Click "Play Again" to play the same user or "New Game" to restart.');
+    }
   });
+
 
 });
 
