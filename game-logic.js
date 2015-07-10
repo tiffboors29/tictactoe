@@ -6,30 +6,39 @@ var count = 0;
 
 
 
-var getInput = function() {
-  console.log('Please choose a square.');
+var getInput = function(player) {
+  console.log(player + ', please choose a square.');
   return prompt();
 };
 
+var getPlayer1Name = function() {
+    console.log('Player 1, what is your name?');
+    var player1Name = prompt();
+    return player1Name;
+};
+
+var getPlayer2Name = function() {
+    console.log('Player 2, what is your name?');
+    var player2Name = prompt();
+    return player2Name;
+};
 
 // randomly selects player to be 'x' and go first
 var setTurn = function(player1Name, player2Name) {
   var x;
-  var o;
   if (Math.random() < 0.5) {
     x = player1Name;
-    o = player2Name;
   } else {
     x = player2Name;
-    o = player1Name;
   }
-  return x, o;
+  return x;
 };
 
 
 // checks if tile is available
 var isAvailable = function(index) {
   if ((board[index] === 'x') || (board[index] === 'o')) {
+    console.log('That square is taken, please choose another.');
     return false;
   } else {
     return true;
@@ -40,18 +49,18 @@ var isAvailable = function(index) {
 
 // sets move for player x if tile is available
 var setX = function(index) {
-  board[index] = 'x';
+    return board[index] = 'x';
 };
 
 
 // sets move for player o if tile is available
 var setO = function(index) {
-  return board[index] = 'o';
+    return board[index] = 'o';
 };
 
 // get player x's move
 var getMoveX = function(move) {
-  return move || getInput();
+    return move || getInput();
 };
 
 // get player o's move
@@ -65,15 +74,15 @@ var checkWinner = function(){
   var winner;
   if ((checkRow() === 'x' ) || (checkCol() === 'x') || (checkDiag() === 'x')) {
     winner = 'x';
-    // console.log('winner is x');
+    console.log('winner is x');
     return winner;
   } else if ((checkRow() === 'o' ) || (checkCol() === 'o') || (checkDiag() === 'o')) {
     winner = 'o';
-    // console.log('winner is o');
+    console.log('winner is o');
     return winner;
   } else if (count === 9) {
     winner = 'cats';
-    // console.log('no winner. cat\'s game');
+    console.log('no winner. cat\'s game');
     return winner;
   } else {
     return false;
@@ -125,22 +134,41 @@ var checkDiag = function() {
 };
 
 
-// // used when playing in console only
-// var playGame = function() {
-//   initGame();
-//   // console.log('Lets play tic tac toe');
-//   while (checkWinner() === false) {
-//     if (count === 0 || (count % 2 === 0)) {
-//       setX(getMoveX());
-//       count++;
-//       checkWinner();
-//     } else {
-//       setO(getMoveO());
-//       count++;
-//       checkWinner();
-//     }
-//   }
-// };
+// used when playing in console only
+var playGame = function() {
+  console.log('Lets play tic tac toe');
+  var player1Name = getPlayer1Name();
+  var player2Name = getPlayer2Name();
+  var x;
+  var o;
+  if ((setTurn(player1Name, player2Name)) === player1Name) {
+      x = player1Name;
+      o = player2Name;
+  } else {
+      x = player2Name;
+      o = player1Name;
+  }
+  while (checkWinner() === false) {
+    if (count === 0 || (count % 2 === 0)) {
+      var move = getInput(x);
+      if (isAvailable(move) === true) {
+        setX(move);
+        console.log(board);
+        count++;
+        checkWinner();
+      }
+    } else {
+      var move = getInput(o);
+      if (isAvailable(move) === true) {
+        setO(move);
+        console.log(board);
+        count++;
+        checkWinner();
+      }
+    }
+  }
+};
+
 
 
 
