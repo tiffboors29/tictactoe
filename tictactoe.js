@@ -99,6 +99,8 @@ $(document).ready(function() {
     count = 0;
     $('.default-tile').removeClass('o-layer');
     $('.default-tile').removeClass('x-layer');
+    $('.default-tile').removeClass('win-tile-x');
+    $('.default-tile').removeClass('win-tile-o');
 
     console.log(board);
 
