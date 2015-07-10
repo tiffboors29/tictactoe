@@ -82,7 +82,7 @@ $(document).ready(function() {
         player2NameWins +=1;
       }
       displayAlert(x + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
-      $('.x-layer').addClass('win-tile-x');
+      showWin('x', 'win-tile-x');
     } else if (checkWinner() === 'o') {
       if (o === player1Name) {
         player1NameWins +=1;
@@ -90,13 +90,55 @@ $(document).ready(function() {
         player2NameWins +=1;
       }
       displayAlert(o + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
-      $('.o-layer').addClass('win-tile-o');
+      showWin('o', 'win-tile-o');
     } else if (checkWinner() ===  'cats') {
       displayAlert('Draw! No Winners! Click "Play Again" to play the same user or "New Game" to restart.');
     }
   });
 
 
+  // pass 'x' or 'o' and 'win-tile-x' or 'win-tile-o'
+  var showWin = function(token, wintile) {
+    if (checkRow() === token) {
+      if (board[0] === board[1] && board[1] === board[2]) {
+        $('.tile0').addClass(wintile);
+        $('.tile1').addClass(wintile);
+        $('.tile2').addClass('win-tile-x');
+      } else if (board[3] === board[4] && board[4] === board[5]) {
+        $('.tile3').addClass(wintile);
+        $('.tile4').addClass(wintile);
+        $('.tile5').addClass(wintile);
+      } else if (board[6] === board[7] && board[7] === board[8]) {
+        $('.tile6').addClass(wintile);
+        $('.tile7').addClass(wintile);
+        $('.tile8').addClass(wintile);
+      }
+    } else if (checkCol() === token) {
+      if (board[0] === board[3] && board[3] === board[6]) {
+        $('.tile0').addClass(wintile);
+        $('.tile3').addClass(wintile);
+        $('.tile6').addClass(wintile);
+      } else if (board[1] === board[4] && board[4] === board[7]) {
+        $('.tile1').addClass(wintile);
+        $('.tile4').addClass(wintile);
+        $('.tile7').addClass(wintile);
+      } else  if (board[2] === board[5] && board[5] === board[8]) {
+        $('.tile2').addClass(wintile);
+        $('.tile5').addClass(wintile);
+        $('.tile8').addClass(wintile);
+      }
+    } else if (checkDiag() === token) {
+      if ( board[2] === board[4] && board[4] === board[6]) {
+        $('.tile2').addClass(wintile);
+        $('.tile4').addClass(wintile);
+        $('.tile6').addClass(wintile);
+      } else if (board[0] === board[4] && board[4] === board[8]) {
+        $('.tile0').addClass(wintile);
+        $('.tile4').addClass(wintile);
+        $('.tile8').addClass(wintile);
+      }
+    }
+  };
 
 
   //////////////////////////////////////////////////////////////////
@@ -112,15 +154,6 @@ $(document).ready(function() {
 
     console.log(board);
 
-    // randomly selects player to be x and go first
-    var x = setTurn(player1Name, player2Name);
-    var o;
-    if (x === player1Name) {
-      o = player2Name;
-    } else {
-      o = player1Name;
-    }
-
     // displays current score between the players
     displayScore(player1Name + ': ' + player1NameWins + ' ' + player2Name + ': ' + player2NameWins);
 
@@ -129,4 +162,6 @@ $(document).ready(function() {
   });
 
 });
+
+
 
