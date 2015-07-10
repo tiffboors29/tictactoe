@@ -157,6 +157,15 @@ $(document).ready(function() {
     // displays current score between the players
     displayScore(player1Name + ': ' + player1NameWins + ' ' + player2Name + ': ' + player2NameWins);
 
+    // randomly selects player to be x and go first
+    var x = setTurn(player1Name, player2Name);
+    var o;
+    if (x === player1Name) {
+      o = player2Name;
+    } else {
+      o = player1Name;
+    }
+
     // tells player x to go first
     displayAlert(x + ', You will be X. Please pick a square');
   });
