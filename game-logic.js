@@ -30,7 +30,6 @@ var setTurn = function(player1Name, player2Name) {
 // checks if tile is available
 var isAvailable = function(index) {
   if ((board[index] === 'x') || (board[index] === 'o')) {
-    displayAlert('That square is taken, please choose another.');
     return false;
   } else {
     return true;
@@ -56,14 +55,12 @@ var checkWinner = function(){
   var winner;
   if ((checkRow() === 'x' ) || (checkCol() === 'x') || (checkDiag() === 'x')) {
     winner = 'x';
-    console.log('winner is x');
   } else if ((checkRow() === 'o' ) || (checkCol() === 'o') || (checkDiag() === 'o')) {
     winner = 'o';
     console.log('winner is o');
   } else if (count === 9) {
     winner = 'cats';
-    console.log('no winner. cat\'s game');
-  } else if (count < 9) {
+  } else {
     winner = false;
   }
   return winner;
