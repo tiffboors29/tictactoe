@@ -14,7 +14,6 @@ $(document).ready(function() {
   $('#player2-name').text(player2Name);
 
 
-
   // starts # of wins per player
   var player1NameWins = 0;
   var player2NameWins = 0;
@@ -47,7 +46,7 @@ $(document).ready(function() {
 
 
   // alerts x to start the game with the first move
-  displayAlert(x + ', you are x. Pick a square.');
+  displayAlert(x + ', you are x. Pick an empty square.');
 
 
   // creates click handler and directs game flow
@@ -60,8 +59,6 @@ $(document).ready(function() {
           setX(i);
           count++
           console.log(i, board);
-        } else {
-          displayAlert(x + ', that square is taken. Choose another.');
         }
     } else {
       if (isAvailable(i) === true) {
@@ -69,23 +66,23 @@ $(document).ready(function() {
           setO(i);
           count++;
           console.log(i, board);
-      } else {
-        displayAlert(x + ', that square is taken. Choose another.');
       }
     }
     // checks for winners, cats or to continue game
     if (checkWinner() === false) {
       if (count === 0 || (count % 2 === 0)) {
-        displayAlert(x + ', pick a square');
+        displayAlert('Player X-' + x + ', pick an empty square');
       } else {
-        displayAlert(o + ', pick a square');
+        displayAlert('Player O-' + o + ', pick an empty square');
       }
     } else if (checkWinner() === 'x') {
       player1NameWins++;
       displayAlert(x + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
+      $('.x-layer').addClass('win-tile-x');
     } else if (checkWinner() === 'o') {
       player2NameWins++;
       displayAlert(o + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
+      $('.o-layer').addClass('win-tile-o');
     } else if (checkWinner() ===  'cats') {
       displayAlert('Draw! No Winners! Click "Play Again" to play the same user or "New Game" to restart.');
     }
@@ -139,29 +136,29 @@ $(document).ready(function() {
             setO(i);
             count++;
             console.log(i, board);
-          }
+        }
       }
       // checks for winners, cats or to continue game
       if ((checkWinner() === false) && (count < 9)) {
         if (count === 0 || (count % 2 === 0)) {
-          displayAlert(x + ', pick a square');
+          displayAlert('Player X-' + x + ', pick an empty square');
         } else {
-          displayAlert(o + ', pick a square');
+          displayAlert('Player O-' + o + ', pick an empty square');
         }
       } else if (checkWinner() === 'x') {
         player1NameWins++;
         displayAlert(x + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
+        $('.x-layer').addClass('win-tile-x');
       } else if (checkWinner() === 'o') {
         player2NameWins++;
         displayAlert(o + ', YOU WON! Click "Play Again" to play the same user or "New Game" to restart.');
+        $('.o-layer').addClass('win-tile-o');
       } else if (checkWinner() ===  'cats') {
         displayAlert('Draw! No Winners! Click "Play Again" to play the same user or "New Game" to restart.');
       }
     });
 
   });
-
-
 
 });
 

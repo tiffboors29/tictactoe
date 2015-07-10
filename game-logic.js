@@ -29,11 +29,13 @@ var setTurn = function(player1Name, player2Name) {
 
 // checks if tile is available
 var isAvailable = function(index) {
-  if ((board[index] === 'x') || (board[index] === 'o')) {
-    return false;
+  var tileStatus;
+  if ( board[index] !== '') {
+    tileStatus = false;
   } else {
-    return true;
+    tileStatus = true;
   }
+  return tileStatus;
 };
 
 
@@ -117,39 +119,5 @@ var checkDiag = function() {
 };
 
 
-// // used when playing in console only
-// var playGame = function(i) {
-//   // console.log('Lets play tic tac toe');
-//   // var player1Name = getPlayer1Name();
-//   // var player2Name = getPlayer2Name();
-//   // var x;
-//   // var o;
-//   // if ((setTurn(player1Name, player2Name)) === player1Name) {
-//   //     x = player1Name;
-//   //     o = player2Name;
-//   // } else {
-//   //     x = player2Name;
-//   //     o = player1Name;
-//   // }
-//   while (checkWinner() === false) {
-//     if (count === 0 || (count % 2 === 0)) {
-//       // var move = getInput(x);
-//       if (isAvailable(i) === true) {
-//         setX(i);
-//         console.log(board);
-//         count++;
-//         checkWinner();
-//       }
-//     } else {
-//       // var move = getInput(o);
-//       if (isAvailable(i) === true) {
-//         setO(i);
-//         console.log(board);
-//         count++;
-//         checkWinner();
-//       }
-//     }
-//   }
-// };
 
 

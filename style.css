@@ -172,6 +172,32 @@ h1 {
 }
 
 
+
+.win-tile-x {
+  background: url("images/winx.jpg"); /* places o over tile */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 25%;
+  height: 25%;
+  background-color: #a3f7b5;
+  border: 2px dashed #664147;
+  float: left;
+}
+
+.win-tile-o {
+  background: url("images/wino.jpg"); /* places o over tile */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 25%;
+  height: 25%;
+  background-color: #a3f7b5;
+  border: 2px dashed #664147;
+  float: left;
+}
+
+
 .tile0 {
   margin-top: 6%;
   margin-left: 6%;
