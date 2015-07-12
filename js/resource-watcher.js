@@ -1,5 +1,6 @@
 // copied from coe along in class
 
+
 'use strict';
 
 var resourceWatcher = function(url, conf) {

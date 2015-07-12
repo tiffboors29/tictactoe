@@ -1,7 +1,6 @@
 //jQuery.ajax (copied from code along)
 
 
-
 $(function(){
   'use strict';
   var gameWatcher;

@@ -1,5 +1,6 @@
 'use strict';
 
+
 var board = ['', '', '', '', '', '', '', '', ''];
 var count = 0;
 
